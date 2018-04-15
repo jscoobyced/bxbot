@@ -8,6 +8,7 @@
     "sourceMap": true,
     "skipDefaultLibCheck": true,
     "strict": true,
+    "noImplicitAny": false,
     "types": ["webpack-env"]
   },
   "exclude": [
