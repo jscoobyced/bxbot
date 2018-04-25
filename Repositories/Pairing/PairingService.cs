@@ -17,7 +17,7 @@ namespace bxbot
         public async Task<IEnumerable<Pairing>> GetPairingAsync(int id, int interval)
         {
             var pairings = new List<Pairing>();
-            var url = string.Format("https://bx.in.th/api/chart/price/?pairing={0}&int={1}&limit=1&callback=display&_=1523111873254", id, interval);
+            var url = string.Format("https://bx.in.th/api/chart/price/?pairing={0}&int={1}&limit=1&callback=display&_={2}", id, interval, DateTime.Now.Millisecond);
             var result = await this.restConnector.GetAsync(url, null);
             if (string.IsNullOrWhiteSpace(result))
             {
@@ -35,7 +35,7 @@ namespace bxbot
                     {
                         var pairing = new Pairing()
                         {
-                            Timestamp = long.Parse(value[0]),
+                            Timestamp = long.Parse(value[0]) - 7 * 60 * 60 * 1000,
                             Low = double.Parse(value[1]),
                             High = double.Parse(value[2]),
                             Current = double.Parse(value[3]),
