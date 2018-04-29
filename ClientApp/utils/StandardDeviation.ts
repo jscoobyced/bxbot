@@ -1,4 +1,4 @@
-import { MovingAverage } from './moving-average';
+import { MovingAverage } from './MovingAverage';
 
 export class StandardDeviation {
 

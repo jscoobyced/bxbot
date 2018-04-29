@@ -9,18 +9,16 @@ export interface BollingerBandData {
 
 export class BollingerBand {
 
-/**
- * Calculate the Bollinger Bands (upper, moving average and lower)
- * @param data The closing prices array
- * @param size The number of days to use for the computation
- * @param times The number of standard deviations to take from the moving average
- * @param movingAverage A pre-calculated moving average array
- * @param standardDeviation A pre-calculated standard deviation array
- */
-  public bb(data: Array<number>, size: number = 20, times: number = 2, movingAverage: Array<number> = [], standardDeviation: Array<number> = []): BollingerBandData {
+  /**
+   * Calculate the Bollinger Bands (upper, moving average and lower)
+   * @param data The closing prices array
+   * @param size The number of days to use for the computation
+   * @param times The number of standard deviations to take from the moving average
+   */
+  public bb(data: Array<number>, size: number = 20, times: number = 2): BollingerBandData {
 
-    movingAverage = movingAverage || new MovingAverage().ma(data, size);
-    standardDeviation = standardDeviation || new StandardDeviation().sd(data, size);
+    const movingAverage = new MovingAverage().ma(data, size);
+    const standardDeviation = new StandardDeviation().sd(data, size);
 
     const timesSd: Array<number> = this.multiply(standardDeviation, times)
 

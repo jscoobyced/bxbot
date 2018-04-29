@@ -1,53 +1,46 @@
 import { GoogleCharts } from 'google-charts';
-import { DateUtil } from '../../utils/DateUtils';
-import { Pairing } from './Models';
 
 export class CandleChart {
-    private static ChartData: Array<Pairing>;
-    private static ChartElement: string;
+    private _chartData: Array<any>;
+    private _chartElement: string;
 
-    public init(chartData: Array<Pairing>, chartElement: string) {
-        CandleChart.ChartData = chartData;
-        CandleChart.ChartElement = chartElement;
+    public constructor(chartData: Array<any>, chartElement: string) {
+        this._chartData = chartData;
+        this._chartElement = chartElement;
     }
 
-    public resetChart() {
-        CandleChart.ChartData = new Array<Pairing>();
-    }
-
-    public renderChart() {
-        GoogleCharts.load(this.drawChart);
-    }
-
-    private drawChart() {
-        const formatedData = new Array<any>();
-        const lengthToShow = 40;
-        const startIndex = Math.max(0, CandleChart.ChartData.length - lengthToShow);
-        for (let i = startIndex; i < CandleChart.ChartData.length; i++) {
-            formatedData.push([
-                DateUtil.toHumanHours(new Date(CandleChart.ChartData[i].timestamp)),
-                CandleChart.ChartData[i].low,
-                CandleChart.ChartData[i].open,
-                CandleChart.ChartData[i].close,
-                CandleChart.ChartData[i].high
-            ]);
-        }
-        var data = GoogleCharts.api.visualization.arrayToDataTable(formatedData, true);
-
-        var options = {
+    public drawChart() {
+        const data: Array<any> = GoogleCharts.api.visualization.arrayToDataTable(this._chartData, true);
+        const options = {
             legend: 'none',
-            height: 500,
+            height: 800,
             candlestick: {
                 fallingColor: { strokeWidth: 0, fill: '#a52714' },
                 risingColor: { strokeWidth: 0, fill: '#0f9d58' },
                 hollowIsRising: true
             },
-            colors: ['black']
+            colors: ['black'],
+            seriesType: 'candlesticks',
+            series: {
+                1: {
+                    type: 'area',
+                    lineWidth: 1,
+                    color: '#FFCDD2'
+                },
+                2: {
+                    type: 'area',
+                    lineWidth: 1,
+                    color: '#90CAF9'
+                },
+                3: {
+                    type: 'line',
+                    lineWidth: 1
+                }
+            }
         };
 
-        var chart = new GoogleCharts.api.visualization.CandlestickChart(document.getElementById(CandleChart.ChartElement));
+        const chart = new GoogleCharts.api.visualization.CandlestickChart(document.getElementById(this._chartElement));
 
         chart.draw(data, options);
     }
-
 }
