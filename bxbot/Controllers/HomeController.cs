@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
 namespace bxbot.Controllers
 {
+    using System.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+
     public class HomeController : Controller
     {
         public IActionResult Index()
@@ -16,7 +12,7 @@ namespace bxbot.Controllers
 
         public IActionResult Error()
         {
-            ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
             return View();
         }
     }

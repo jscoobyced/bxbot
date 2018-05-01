@@ -1,4 +1,4 @@
-namespace bxbot
+namespace bxbot.Services
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

@@ -1,5 +1,6 @@
 namespace bxbot
 {
+    using bxbot.Services;
     using Microsoft.Extensions.DependencyInjection;
 
     public static class DependencyInjection
