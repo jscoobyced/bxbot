@@ -3,5 +3,5 @@ obj/
 coverage/
 coverage.xml
 results.xml
-wwwroot/dist/
+bxbot/wwwroot/dist/
 node_modules/
