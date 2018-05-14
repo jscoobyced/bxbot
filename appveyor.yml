@@ -20,5 +20,8 @@ build:
   project: bxbot-tests\bxbot-tests.csproj
   verbosity: minimal
 test_script:
-- ps: cd bxbot-tests & ./runtest.ps1
+- ps: >-
+    cd bxbot-tests
+
+    ./runtest.ps1
 deploy: off
