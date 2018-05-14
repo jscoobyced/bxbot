@@ -1,0 +1,16 @@
+version: 1.0.{build}
+skip_tags: true
+build_script:
+- cmd: >-
+    cd bxbot
+    dotnet restore
+    yarn install
+    cd ..
+    cd bxbot-tests
+    dotnet restore
+    dotnet build
+test_script:
+- ps: >-
+    cd bxbot-tests
+    ./runtest.ps1
+deploy: off
