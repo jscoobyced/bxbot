@@ -9,13 +9,16 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
+cache:
+- '%USERPROFILE%\.nuget\packages -> **\*.csproj'
 before_build:
 - cmd: >-
     cd bxbot & yarn install & cd ..
 
     dotnet restore
 build:
-  project: bxbot\bxbot.csproj
+  project: bxbot-tests\bxbot-tests.csproj
   verbosity: minimal
-test: off
+test_script:
+- ps: cd bxbot-tests & ./runtest.ps1
 deploy: off
