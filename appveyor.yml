@@ -1,0 +1,27 @@
+version: 1.0.{build}
+skip_tags: true
+image: Visual Studio 2017
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+cache:
+- '%USERPROFILE%\.nuget\packages -> **\*.csproj'
+before_build:
+- cmd: >-
+    cd bxbot & yarn install & cd ..
+
+    dotnet restore
+build:
+  project: bxbot-tests\bxbot-tests.csproj
+  verbosity: minimal
+test_script:
+- ps: >-
+    cd bxbot-tests
+
+    ./runtest.ps1
+deploy: off
