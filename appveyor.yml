@@ -13,6 +13,8 @@ before_build:
 - cmd: >-
     cd bxbot & yarn install & cd ..
 
+    dotnet --version
+
     dotnet restore
 
     choco install codecov
