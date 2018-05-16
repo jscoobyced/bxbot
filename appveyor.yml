@@ -23,7 +23,7 @@ build:
   verbosity: minimal
 test_script:
 - cmd: >-
-    %USERPROFILE%\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -register:user -oldStyle -target:"c:\Program Files\dotnet\dotnet.exe" -targetargs:"test bxbot-tests.csproj" -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot-tests]*Program" -output:"coverage.xml"
+    %USERPROFILE%\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -register:user -oldStyle -target:"c:\Program Files\dotnet\dotnet.exe" -targetargs:"test bxbot-tests\bxbot-tests.csproj" -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot-tests]*Program" -output:"coverage.xml"
 
     codecov -f coverage.xml
 deploy: off
