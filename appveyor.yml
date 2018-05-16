@@ -1,6 +1,9 @@
 version: 1.0.{build}
 skip_tags: true
 image: Visual Studio 2017
+environment:
+  codecov_token:
+    secure: 3r3MdCJ/YIEhWCkjeMJd0AYoV0lhyXO6EWI8gQtMGPGfJA0IVWAo3mzM8qvCh54d
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -16,12 +19,14 @@ before_build:
     cd bxbot & yarn install & cd ..
 
     dotnet restore
+
+    choco install codecov
 build:
   project: bxbot-tests\bxbot-tests.csproj
   verbosity: minimal
 test_script:
-- ps: >-
-    cd bxbot-tests
+- cmd: >-
+    %USERPROFILE%\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -register:user -oldStyle -target:"c:\Program Files\dotnet\dotnet.exe" -targetargs:"test bxbot-tests.csproj" -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot-tests]*Program" -output:"coverage.xml"
 
-    ./runtest.ps1
+    codecov -f coverage.xml -t %codecov_token%
 deploy: off
