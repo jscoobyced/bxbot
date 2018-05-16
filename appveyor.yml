@@ -9,8 +9,6 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-cache:
-- '%USERPROFILE%\.nuget\packages -> **\*.csproj'
 before_build:
 - cmd: >-
     cd bxbot & yarn install & cd ..
