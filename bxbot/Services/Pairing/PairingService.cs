@@ -14,6 +14,7 @@ namespace bxbot.Services
         {
             this.restConnector = restConnector;
         }
+
         public async Task<IEnumerable<Pairing>> GetPairingAsync(int id, int interval)
         {
             var pairings = new List<Pairing>();
@@ -33,6 +34,11 @@ namespace bxbot.Services
                 resultArray.ToList().ForEach(
                     value =>
                     {
+                        if (value.Length != 7)
+                        {
+                            return;
+                        }
+
                         var pairing = new Pairing()
                         {
                             Timestamp = long.Parse(value[0]) - 7 * 60 * 60 * 1000,
