@@ -10,6 +10,7 @@ namespace bxbot.tests
     public class DataControllerTests
     {
         private const string ResultEmptyList = "because the default result should be an empty list.";
+
         [Fact]
         public void WithNullPairingService()
         {

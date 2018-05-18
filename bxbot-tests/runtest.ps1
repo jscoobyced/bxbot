@@ -7,7 +7,7 @@ New-Variable -Name "ReportGeneratorVersion" -Visibility Public -Value 3.1.2
     -targetargs:"test bxbot-tests.csproj" `
     -output:coverage.xml `
     -oldStyle `
-    -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot-tests]*Program" `
+    -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot*]*Program -[bxbot*]*Startup" `
     -register:user
 
 & "$PackagePath\reportgenerator\$ReportGeneratorVersion\tools\ReportGenerator.exe" `
