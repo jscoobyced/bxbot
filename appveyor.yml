@@ -3,8 +3,8 @@ skip_tags: true
 environment:
   GitHubSonarKey:
     secure: u9ViKhJinPKbrtOwSb0mQTaMYORjGtLq5cgDYEbI/MAR7ZSPqIk7t5+pp30J0Y/X
-  sonar-key:
-    secure: H2d2NbTv1QF01Md7dUL4A09aux1Kc1InJt5nSeiNEOpjEVVXQjx6SmLzcCoFB21p
+  SonarKey:
+    secure: H2d2NbTv1QF01Md7dUL4A09aux1Kc1InJt5nSeiNEOq9WslV95VcS6+b/lX+ie0n
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -14,6 +14,6 @@ dotnet_csproj:
   file_version: '{version}'
   informational_version: '{version}'
 build_script:
-- cmd: >-
-    powershell.exe -file .\runBuild.ps1 %sonar-key%
+- ps: >-
+    .\runBuild.ps1
 deploy: off

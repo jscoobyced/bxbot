@@ -2,6 +2,7 @@ Write-Host "Build version : $env:APPVEYOR_BUILD_VERSION"
 Write-Host "Author        : $env:APPVEYOR_REPO_COMMIT_AUTHOR"
 Write-Host "Branch        : $env:APPVEYOR_REPO_BRANCH"
 
+$sonarkey = $env:SonarKey
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
@@ -9,7 +10,6 @@ $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netc
 Invoke-WebRequest $source -OutFile $destination
 7z x $destination -o"$sonarbuild"
 
-Get-ChildItem env:*
 
 Set-Location bxbot
 #yarn install
@@ -27,7 +27,7 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.organization="jscoobyced-github" `
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
-        /d:sonar.login="$sonar-key" `
+        /d:sonar.login="$sonarkey" `
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js"
 }
 
@@ -47,5 +47,5 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
         end `
-        /d:sonar.login="$sonar-key" `
+        /d:sonar.login="$sonarkey" `
 }
