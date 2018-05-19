@@ -35,7 +35,8 @@ if ( "master" -Eq $env:APPVEYOR_REPO_BRANCH )
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
         /d:sonar.login="$sonarkey" `
-        /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js"
+        /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js" `
+        /d:sonar.verbose=true
 }
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
@@ -52,7 +53,8 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.analysis.mode=preview `
         /d:sonar.github.pullRequest=$pullrequest `
         /d:sonar.github.repository="$slug" `
-        /d:sonar.github.oauth=$ghkey
+        /d:sonar.github.oauth=$ghkey `
+        /d:sonar.verbose=true
 }
 
 dotnet build
