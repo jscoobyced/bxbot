@@ -67,4 +67,4 @@ codecov -f coverage.xml
 
 dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
     end `
-    /d:sonar.login="$sonarkey" `
+    /d:sonar.login="$sonarkey"
