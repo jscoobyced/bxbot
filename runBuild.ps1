@@ -24,9 +24,12 @@ dotnet restore
 
 choco install codecov
 
+$runSonar = FALSE
+
 if ( "master" -Eq $env:APPVEYOR_REPO_BRANCH )
 {
     Write-Host "Building for branch"
+    $runSonar = TRUE
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
         begin `
         /k:"bxbot" `
@@ -42,6 +45,7 @@ if ( "master" -Eq $env:APPVEYOR_REPO_BRANCH )
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
     Write-Host "Building for Pull Request"
+    $runSonar = TRUE
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
         begin `
         /k:"bxbot" `
@@ -69,7 +73,10 @@ dotnet build
 
 codecov -f coverage.xml
 
-dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
+if ( $runSonar )
+{
+    dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
     end `
     /d:sonar.login="$sonarkey" `
     /d:sonar.verbose=true
+}
