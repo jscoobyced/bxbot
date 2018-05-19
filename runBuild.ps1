@@ -2,7 +2,10 @@ Write-Host "Build version : $env:APPVEYOR_BUILD_VERSION"
 Write-Host "Author        : $env:APPVEYOR_REPO_COMMIT_AUTHOR"
 Write-Host "Branch        : $env:APPVEYOR_REPO_BRANCH"
 
+$pullrequest = $env:APPVEYOR_PULL_REQUEST_NUMBER
 $sonarkey = $env:SonarKey
+$slug = $env:APPVEYOR_PROJECT_SLUG
+$ghkey = $env:GitHubSonarKey
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
@@ -29,6 +32,22 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
         /d:sonar.login="$sonarkey" `
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js"
+}
+
+if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
+{
+    dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
+        begin `
+        /k:"bxbot" `
+        /d:sonar.organization="jscoobyced-github" `
+        /d:sonar.host.url="https://sonarcloud.io" `
+        /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
+        /d:sonar.login="$sonarkey" `
+        /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js" `
+        /d:sonar.analysis.mode=preview `
+        /d:sonar.github.pullRequest=$pullrequest `
+        /d:sonar.github.repository=$slug `
+        /d:sonar.github.oauth=$ghkey
 }
 
 dotnet build
