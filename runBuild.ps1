@@ -37,7 +37,7 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.login="$env:SonarKey" `
 }
 
-$env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
+$USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
     -register:user `
     -oldStyle `
     -target:"c:\Program Files\dotnet\dotnet.exe" `
