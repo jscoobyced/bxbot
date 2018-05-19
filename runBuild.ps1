@@ -9,7 +9,7 @@ $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netc
 Invoke-WebRequest $source -OutFile $destination
 7z x $destination -o"$sonarbuild"
 
-Get-ChildItem $env
+Get-ChildItem env:*
 
 Set-Location bxbot
 #yarn install
