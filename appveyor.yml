@@ -4,7 +4,7 @@ environment:
   GitHubSonarKey:
     secure: u9ViKhJinPKbrtOwSb0mQTaMYORjGtLq5cgDYEbI/MAR7ZSPqIk7t5+pp30J0Y/X
   SonarKey:
-    secure: H2d2NbTv1QF01Md7dUL4A09aux1Kc1InJt5nSeiNEOq9WslV95VcS6+b/lX+ie0n
+    secure: QEq4s9y/UCuCthVGe2ZQCoJ9b0Bh8AtAogvTi5QdxulupzG2rOC+DHKrHy5pVG+l
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'

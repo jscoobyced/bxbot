@@ -12,12 +12,12 @@ Invoke-WebRequest $source -OutFile $destination
 
 
 Set-Location bxbot
-#yarn install
+yarn install
 Set-Location ..
 
-#dotnet restore
+dotnet restore
 
-#choco install codecov
+choco install codecov
 
 if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
@@ -31,17 +31,17 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js"
 }
 
-#dotnet build
+dotnet build
 
-#& "$env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe" `
-#    -register:user `
-#    -oldStyle `
-#    -target:"c:\Program Files\dotnet\dotnet.exe" `
-#    -targetargs:"test --no-build bxbot-tests\bxbot-tests.csproj" `
-#    -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot*]*Program -[bxbot*]*Startup" `
-#    -output:"coverage.xml"
+& "$env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe" `
+    -register:user `
+    -oldStyle `
+    -target:"c:\Program Files\dotnet\dotnet.exe" `
+    -targetargs:"test --no-build bxbot-tests\bxbot-tests.csproj" `
+    -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot*]*Program -[bxbot*]*Startup" `
+    -output:"coverage.xml"
 
-#codecov -f coverage.xml
+codecov -f coverage.xml
 
 if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
