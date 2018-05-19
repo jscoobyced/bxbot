@@ -1,11 +1,13 @@
 Write-Host "Build version : $env:APPVEYOR_BUILD_VERSION"
 Write-Host "Author        : $env:APPVEYOR_REPO_COMMIT_AUTHOR"
 Write-Host "Branch        : $env:APPVEYOR_REPO_BRANCH"
+Write-Host "Slug        : $env:APPVEYOR_PROJECT_SLUG"
 
 $pullrequest = $env:APPVEYOR_PULL_REQUEST_NUMBER
 $sonarkey = $env:SonarKey
 $version = $env:APPVEYOR_BUILD_VERSION
 $ghkey = $env:GitHubSonarKey
+$slug = $env:APPVEYOR_PROJECT_SLUG
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
@@ -49,7 +51,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js" `
         /d:sonar.analysis.mode=preview `
         /d:sonar.github.pullRequest=$pullrequest `
-        /d:sonar.github.repository="https://github.com/jscoobyced/bxbot" `
+        /d:sonar.github.repository="$slug" `
         /d:sonar.github.oauth=$ghkey
 }
 
