@@ -3,12 +3,11 @@ Write-Host "Author        : $env:APPVEYOR_REPO_COMMIT_AUTHOR"
 Write-Host "Branch        : $env:APPVEYOR_REPO_BRANCH"
 
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
-$sonarbuild = "$sonar\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0"
+$sonarbuild = "$sonar\sonar-scanner-msbuild"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 Invoke-WebRequest $source -OutFile $destination
-7z x $destination -o"$sonar"
-Get-ChildItem $sonar
+7z x $destination -o"$sonarbuild"
 
 Set-Location bxbot
 yarn install
