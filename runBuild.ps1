@@ -4,7 +4,7 @@ Write-Host "Branch        : $env:APPVEYOR_REPO_BRANCH"
 
 $pullrequest = $env:APPVEYOR_PULL_REQUEST_NUMBER
 $sonarkey = $env:SonarKey
-$slug = $env:APPVEYOR_PROJECT_SLUG
+$version = $env:APPVEYOR_BUILD_VERSION
 $ghkey = $env:GitHubSonarKey
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
@@ -27,6 +27,7 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
         begin `
         /k:"bxbot" `
+        /d:sonar.projectVersion="$version"
         /d:sonar.organization="jscoobyced-github" `
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
