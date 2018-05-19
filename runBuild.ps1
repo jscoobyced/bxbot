@@ -16,7 +16,7 @@ $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/downloa
 $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 Invoke-WebRequest $source -OutFile $destination
 7z x $destination -o$sonar
-Get-Children $sonar
+Get-ChildItem $sonar
 
 if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
