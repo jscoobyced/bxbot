@@ -5,6 +5,6 @@ namespace bxbot
 
     public interface IRestConnector
     {
-        Task<string> GetAsync(string url, IDictionary<string, object> parameters);
+        Task<string> GetAsync(string url);
     }
 }

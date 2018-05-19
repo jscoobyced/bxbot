@@ -11,6 +11,7 @@ namespace bxbot.tests
 
         [Theory]
         [InlineData(null, 0)]
+        [InlineData("null", 0)]
         [InlineData("", 0)]
         [InlineData("[]", 0)]
         [InlineData("[[1,2.0,2.0,2.0,2.0,2.0]]", 0)]

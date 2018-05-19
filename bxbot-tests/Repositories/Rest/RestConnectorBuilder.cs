@@ -18,7 +18,7 @@ namespace bxbot.tests
         {
             var mockRestConnector = new Mock<IRestConnector>();
             mockRestConnector
-                .Setup(m=>m.GetAsync(It.IsAny<string>(), It.IsAny<IDictionary<string, object>>()))
+                .Setup(m=>m.GetAsync(It.IsAny<string>()))
                 .ReturnsAsync(this.result);
 
             return mockRestConnector.Object;
