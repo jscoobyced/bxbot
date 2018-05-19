@@ -25,7 +25,7 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.organization="jscoobyced-github" `
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
-        /d:sonar.login="%SonarKey%" `
+        /d:sonar.login="$sonar-key" `
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js"
 }
 
@@ -45,5 +45,5 @@ if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
         end `
-        /d:sonar.login="%SonarKey%" `
+        /d:sonar.login="$sonar-key" `
 }

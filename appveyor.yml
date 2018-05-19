@@ -3,7 +3,7 @@ skip_tags: true
 environment:
   GitHubSonarKey:
     secure: u9ViKhJinPKbrtOwSb0mQTaMYORjGtLq5cgDYEbI/MAR7ZSPqIk7t5+pp30J0Y/X
-  SonarKey:
+  sonar-key:
     secure: H2d2NbTv1QF01Md7dUL4A09aux1Kc1InJt5nSeiNEOpjEVVXQjx6SmLzcCoFB21p
 dotnet_csproj:
   patch: true
@@ -15,5 +15,5 @@ dotnet_csproj:
   informational_version: '{version}'
 build_script:
 - ps: >-
-    .\runBuild.ps1 %SonarKey%
+    .\runBuild.ps1 $sonar-key
 deploy: off
