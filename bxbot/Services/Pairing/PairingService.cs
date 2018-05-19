@@ -19,14 +19,16 @@ namespace bxbot.Services
         {
             var pairings = new List<Pairing>();
             var url = string.Format("https://bx.in.th/api/chart/price/?pairing={0}&int={1}&limit=1&callback=display&_={2}", id, interval, DateTime.Now.Millisecond);
-            var result = await this.restConnector.GetAsync(url, null);
+            var result = await this.restConnector.GetAsync(url);
             if (string.IsNullOrWhiteSpace(result))
             {
                 return pairings;
             }
 
-            result = result.Substring(result.IndexOf("["));
-            result = result.Substring(0, result.LastIndexOf("]") + 1);
+            if(result.Contains("["))
+                result = result.Substring(result.IndexOf("["));
+            if(result.Contains("]"))
+                result = result.Substring(0, result.LastIndexOf("]") + 1);
             result = result.Replace("\n", "");
             var resultArray = JsonConvert.DeserializeObject<string[][]>(result);
             if (resultArray != null)
