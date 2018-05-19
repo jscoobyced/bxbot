@@ -15,5 +15,5 @@ dotnet_csproj:
   informational_version: '{version}'
 build_script:
 - ps: >-
-    .\runBuild.ps1 $SonarKey $env:SonarKey $secure:SonarKey
+    .\runBuild.ps1
 deploy: off
