@@ -1,5 +1,10 @@
 version: 1.0.{build}
 skip_tags: true
+environment:
+  GitHubSonarKey:
+    secure: u9ViKhJinPKbrtOwSb0mQTaMYORjGtLq5cgDYEbI/MAR7ZSPqIk7t5+pp30J0Y/X
+  SonarKey:
+    secure: H2d2NbTv1QF01Md7dUL4A09aux1Kc1InJt5nSeiNEOpjEVVXQjx6SmLzcCoFB21p
 image: Visual Studio 2017
 dotnet_csproj:
   patch: true
@@ -18,9 +23,16 @@ before_build:
     dotnet restore
 
     choco install codecov
+
+    choco install "msbuild-sonarqube-runner"
+
+    if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) {dotnet C:\ProgramData\chocolatey\lib\msbuild-sonarqube-runner\tools\SonarScanner.MSBuild.dll begin /k:"bxbot" /d:sonar.organization="jscoobyced-github" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.login="%SonarKey%" /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js" }
 build:
   project: bxbot-tests\bxbot-tests.csproj
   verbosity: minimal
+after_build:
+- cmd: >-
+    if (-Not $env:APPVEYOR_PULL_REQUEST_NUMBER) {dotnet C:\ProgramData\chocolatey\lib\msbuild-sonarqube-runner\tools\SonarScanner.MSBuild.dll end /d:sonar.login="%SonarKey%" }
 test_script:
 - cmd: >-
     %USERPROFILE%\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe -register:user -oldStyle -target:"c:\Program Files\dotnet\dotnet.exe" -targetargs:"test --no-build bxbot-tests\bxbot-tests.csproj" -filter:"+[bxbot]* +[bxbot-tests]* -[bxbot*]*Program -[bxbot*]*Startup" -output:"coverage.xml"
