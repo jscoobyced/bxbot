@@ -46,7 +46,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js" `
         /d:sonar.analysis.mode=preview `
         /d:sonar.github.pullRequest=$pullrequest `
-        /d:sonar.github.repository=$slug `
+        /d:sonar.github.repository="https://github.com/jscoobyced/bxbot" `
         /d:sonar.github.oauth=$ghkey
 }
 
