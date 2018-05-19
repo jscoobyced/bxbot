@@ -10,13 +10,13 @@ dotnet restore
 
 choco install codecov
 
-$sonar = "$env:APPVEYOR_BUILD_FOLDER\sonar-msbuild"
+$sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 Invoke-WebRequest $source -OutFile $destination
 7z x $destination -o$sonar
-Get-ChildItem $sonar
+Get-ChildItem $sonarbuild
 
 if ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
