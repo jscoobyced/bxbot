@@ -1,7 +1,7 @@
 Write-Host "Build version : $env:APPVEYOR_BUILD_VERSION"
 Write-Host "Author        : $env:APPVEYOR_REPO_COMMIT_AUTHOR"
 Write-Host "Branch        : $env:APPVEYOR_REPO_BRANCH"
-Write-Host "Slug        : $env:APPVEYOR_PROJECT_SLUG"
+Write-Host "Repository          : $env:APPVEYOR_REPO_NAME"
 
 $pullrequest = $env:APPVEYOR_PULL_REQUEST_NUMBER
 $sonarkey = $env:SonarKey
@@ -78,7 +78,7 @@ if ( $runSonar )
 {
     $exec = "$sonarbuild\sonar-scanner-3.1.0.1141\bin\sonar-scanner.bat"
     (Get-Content $exec).replace('org.sonarsource.scanner.cli.Main ', 'org.sonarsource.scanner.cli.Main -X ') | Set-Content $exec
-    
+
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
     end `
     /d:sonar.login="$sonarkey"
