@@ -11,7 +11,7 @@ $slug = $env:APPVEYOR_PROJECT_SLUG
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
-$SONAR_SCANNER_OPTS="-Xmx1024m -X"
+$env:SONAR_SCANNER_OPTS="-Xmx1024m -X"
 $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 Invoke-WebRequest $source -OutFile $destination
 7z x $destination -o"$sonarbuild"
