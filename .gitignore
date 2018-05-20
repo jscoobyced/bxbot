@@ -5,3 +5,4 @@ coverage.xml
 results.xml
 bxbot/wwwroot/dist/
 node_modules/
+.sonarqube/
