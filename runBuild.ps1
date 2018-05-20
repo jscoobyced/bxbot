@@ -34,7 +34,7 @@ if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQ
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
         begin `
         /k:"bxbot" `
-        /v:"$version"
+        /v:"$version" `
         /d:sonar.organization="jscoobyced-github" `
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
