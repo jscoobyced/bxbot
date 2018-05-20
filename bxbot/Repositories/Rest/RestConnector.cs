@@ -8,7 +8,7 @@ namespace bxbot
 
     public class RestConnector : IRestConnector
     {
-        private HttpClient client = new HttpClient();
+        private readonly HttpClient client = new HttpClient();
 
         public async Task<string> GetAsync(string url)
         {

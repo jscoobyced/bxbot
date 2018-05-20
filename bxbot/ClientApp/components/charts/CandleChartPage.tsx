@@ -21,7 +21,7 @@ export class CandleChartPage extends React.Component<RouteComponentProps<{}>, Fe
             .then(response => response.json() as Promise<Pairing[]>)
             .then(data => {
                 this._candleChart = new CandleChart(this.formatData(data), CandleChartPage.ChartElement);
-                this.setState({ loading: false || !GoogleChartInitializer.IsReady() });
+                this.setState({ loading: !GoogleChartInitializer.IsReady() });
             });
     }
 

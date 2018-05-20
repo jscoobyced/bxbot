@@ -1,6 +1,7 @@
 namespace bxbot.tests
 {
     using System;
+    using System.Threading.Tasks;
     using FluentAssertions;
     using Xunit;
 
@@ -9,7 +10,7 @@ namespace bxbot.tests
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public async void GetAsyncBlankUrlTests(string url)
+        public async Task GetAsyncBlankUrlTests(string url)
         {
             var restConnector = new RestConnector();
             var result = await restConnector.GetAsync(url);

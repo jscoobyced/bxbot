@@ -1,10 +1,10 @@
 export class DateUtil {
-    public static toHumanHours(date: Date): String {
+    public static toHumanHours(date: Date): string {
         return this.toDigits(date.getHours(), 2) + ":" + this.toDigits(date.getMinutes(), 2);
     }
 
-    private static toDigits(value:number, length: number): String {
-        let result:String = value.toString();
+    private static toDigits(value:number, length: number): string {
+        let result:string = value.toString();
         while(result.length<length) {
             result = "0" + result;
         }

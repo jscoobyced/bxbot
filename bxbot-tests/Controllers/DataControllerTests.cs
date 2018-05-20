@@ -27,7 +27,7 @@ namespace bxbot.tests
         }
 
         [Fact]
-        public async void WithPairingServiceNullPairings()
+        public async Task WithPairingServiceNullPairings()
         {
             var dataController = new DataControllerBuilder()
             .WithPairingService(new PairingServiceBuilder().WithNullPairings().Build())
@@ -37,8 +37,9 @@ namespace bxbot.tests
 
             result.Should().BeNull();
         }
+
         [Fact]
-        public async void WithPairingServiceNoPairings()
+        public async Task WithPairingServiceNoPairings()
         {
             var dataController = new DataControllerBuilder()
             .WithPairingService(new PairingServiceBuilder().WithNoPairings().Build())
@@ -48,8 +49,9 @@ namespace bxbot.tests
 
             result.Should().NotBeNull(ResultEmptyList);
         }
+
         [Fact]
-        public async void WithPairingServicePairings()
+        public async Task WithPairingServicePairings()
         {
             var pairings = new List<Pairing>();
             pairings.Add(new Pairing());
