@@ -11,7 +11,6 @@ $slug = $env:APPVEYOR_PROJECT_SLUG
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
-$env:SONAR_SCANNER_OPTS="-Xmx1024m"
 $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 Invoke-WebRequest $source -OutFile $destination
 7z x $destination -o"$sonarbuild"
@@ -59,7 +58,8 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.analysis.mode=preview `
         /d:sonar.github.pullRequest=$pullrequest `
         /d:sonar.github.repository="$slug" `
-        /d:sonar.github.oauth=$ghkey
+        /d:sonar.github.oauth=$ghkey `
+        /d:sonar.verbose=true
 }
 
 dotnet build
