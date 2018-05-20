@@ -28,7 +28,7 @@ $runSonar = FALSE
 
 if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER ) )
 {
-    Write-Host "Building for branch\r\n"
+    Write-Host "Building for branch"
 
     $runSonar = 1
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
@@ -44,7 +44,7 @@ if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQ
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
-    Write-Host "Building for Pull Request\r\n"
+    Write-Host "Building for Pull Request"
 
     $runSonar = 1
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
@@ -76,6 +76,9 @@ codecov -f coverage.xml
 
 if ( $runSonar )
 {
+    $exec = "$sonarbuild\sonar-scanner-3.1.0.1141\bin\sonar-scanner.bat"
+    (Get-Content $exec).replace('org.sonarsource.scanner.cli.Main ', 'org.sonarsource.scanner.cli.Main -X ') | Set-Content $exec
+    
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
     end `
     /d:sonar.login="$sonarkey"
