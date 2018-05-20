@@ -2,9 +2,9 @@ version: 1.0.{build}
 skip_tags: true
 environment:
   GitHubSonarKey:
-    secure: tYQVx7/vrP730iytAlVnN4mY2+5TLTBDsezb4SiuPLEo6oI/rDZNPV0fXpwJ9qJF
+    secure: SY6rvHCSxikpJpkcDR/JsnMDc41rD9+L2w0pr370Qd1cUZJJJY4rxVISzdmTf1fG
   SonarKey:
-    secure: QEq4s9y/UCuCthVGe2ZQCoJ9b0Bh8AtAogvTi5QdxulupzG2rOC+DHKrHy5pVG+l
+    secure: 12QqwTL16f53WwrFtClle28ZDS3BsHmEheUeMyT6r1BnReEnO70Vx7mzGHGLBuB9
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'

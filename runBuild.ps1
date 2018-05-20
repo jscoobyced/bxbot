@@ -54,12 +54,11 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
         /d:sonar.login="$sonarkey" `
-        /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js" `
-        /d:sonar.analysis.mode=preview `
+        /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js,**\*.ico" `
+        /d:sonar.analysis.mode=issues `
         /d:sonar.github.pullRequest=$pullrequest `
         /d:sonar.github.repository="$repoName" `
-        /d:sonar.github.oauth=$ghkey `
-        /d:sonar.verbose=true
+        /d:sonar.github.oauth=$ghkey
 }
 
 dotnet build
@@ -76,9 +75,6 @@ codecov -f coverage.xml
 
 if ( $runSonar )
 {
-    $exec = "$sonarbuild\sonar-scanner-3.1.0.1141\bin\sonar-scanner.bat"
-    (Get-Content $exec).replace('org.sonarsource.scanner.cli.Main ', 'org.sonarsource.scanner.cli.Main -X ') | Set-Content $exec
-
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
     end `
     /d:sonar.login="$sonarkey"
