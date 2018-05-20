@@ -28,7 +28,7 @@ $runSonar = FALSE
 
 if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQUEST_NUMBER ) )
 {
-    Write-Host "Building for branch"
+    Write-Host "Building for branch\r\n"
 
     $runSonar = 1
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
@@ -45,7 +45,7 @@ if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQ
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
-    Write-Host "Building for Pull Request"
+    Write-Host "Building for Pull Request\r\n"
 
     $runSonar = 1
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
