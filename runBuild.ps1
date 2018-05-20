@@ -79,6 +79,5 @@ if ( $runSonar )
 {
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
     end `
-    /d:sonar.login="$sonarkey" `
-    /d:sonar.verbose=true
+    /d:sonar.login="$sonarkey"
 }
