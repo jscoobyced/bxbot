@@ -31,15 +31,6 @@ namespace bxbot.tests
             pairings.Should().BeAssignableTo<List<Pairing>>("the method always returns a list of pairings.");
             var pairingList = (List<Pairing>)pairings;
             pairingList.Count.Should().Be(length, "the data returned is such.");
-
-            // This is to force fail a build
-            if(this != null)
-            {
-                // Skip
-            } if(this != null)
-            {
-                // This is ugly
-            }
         }
 
     }
