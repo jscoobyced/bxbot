@@ -12,6 +12,8 @@ namespace bxbot
 {
     public class Startup
     {
+        private const string ErrorPage = "/Home/Error";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -40,7 +42,7 @@ namespace bxbot
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler(ErrorPage);
             }
 
             app.UseStaticFiles();

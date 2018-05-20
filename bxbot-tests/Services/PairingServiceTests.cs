@@ -1,6 +1,7 @@
 namespace bxbot.tests
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using bxbot.Services;
     using FluentAssertions;
     using Moq;
@@ -8,6 +9,8 @@ namespace bxbot.tests
 
     public class PairingServiceTests
     {
+
+        private string NotUsed;
 
         [Theory]
         [InlineData(null, 0)]
@@ -17,7 +20,7 @@ namespace bxbot.tests
         [InlineData("[[1,2.0,2.0,2.0,2.0,2.0]]", 0)]
         [InlineData("[[1,2.0,2.0,2.0,2.0,2.0,2.0]]", 1)]
         [InlineData("[[1,2.0,2.0,2.0,2.0,2.0,2.0],[1,2.0,2.0,2.0,2.0,2.0,2.0]]", 2)]
-        public async void GetPairingAsync(string result, int length)
+        public async Task GetPairingAsync(string result, int length)
         {
             var restConnector = new RestConnectorBuilder()
                                     .WithResult(result)
