@@ -10,8 +10,6 @@ namespace bxbot.tests
     public class PairingServiceTests
     {
 
-        private string NotUsed;
-
         [Theory]
         [InlineData(null, 0)]
         [InlineData("null", 0)]
@@ -34,6 +32,14 @@ namespace bxbot.tests
             var pairingList = (List<Pairing>)pairings;
             pairingList.Count.Should().Be(length, "the data returned is such.");
 
+            // This is to force fail a build
+            if(this != null)
+            {
+                // Skip
+            } if(this != null)
+            {
+                // This is ugly
+            }
         }
 
     }
