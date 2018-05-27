@@ -74,6 +74,10 @@ dotnet build
 
 codecov -f coverage.xml
 
+Set-Location bxbot
+yarn test:coverage
+Set-Location ..
+
 if ( $runSonar )
 {
     dotnet "$sonarbuild\SonarScanner.MSBuild.dll" `
