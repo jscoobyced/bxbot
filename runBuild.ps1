@@ -38,7 +38,7 @@ if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQ
         /d:sonar.organization="jscoobyced-github" `
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
-        /d:sonar.javascript.lcov.reportPaths="bxbot\tscoverage\lcov.info" `
+        /d:sonar.typescript.lcov.reportPaths="bxbot/tscoverage/lcov.info" `
         /d:sonar.login="$sonarkey" `
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js,tscoverage\**\*,**\jestsetup.ts"
 }
