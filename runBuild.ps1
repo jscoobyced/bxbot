@@ -10,6 +10,7 @@ $ghkey = $env:GitHubSonarKey
 $repoName = $env:APPVEYOR_REPO_NAME
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
+$sonarexclusion = "coverage\**\*,**\*.xml,**\*.js,tscoverage\**\*,**\jestsetup.ts,**\*.ico,**\Program.cs,**\Startup.cs,**\*.spec.ts,**\*.spec.tsx"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 Invoke-WebRequest $source -OutFile $destination
@@ -40,7 +41,7 @@ if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQ
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
         /d:sonar.typescript.lcov.reportPaths="tscoverage/lcov.info" `
         /d:sonar.login="$sonarkey" `
-        /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js,tscoverage\**\*,**\jestsetup.ts"
+        /d:sonar.exclusions="$sonarexclusion"
 }
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
@@ -55,7 +56,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
         /d:sonar.login="$sonarkey" `
-        /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js,**\*.ico" `
+        /d:sonar.exclusions="$sonarexclusion" `
         /d:sonar.analysis.mode=issues `
         /d:sonar.github.pullRequest=$pullrequest `
         /d:sonar.github.repository="$repoName" `
