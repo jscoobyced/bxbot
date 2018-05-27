@@ -10,7 +10,7 @@ $ghkey = $env:GitHubSonarKey
 $repoName = $env:APPVEYOR_REPO_NAME
 $sonar = "$env:APPVEYOR_BUILD_FOLDER"
 $sonarbuild = "$sonar\sonar-scanner-msbuild"
-$sonarexclusion = "coverage\**\*,**\*.xml,**\*.js,tscoverage\**\*,**\jestsetup.ts,**\*.ico,**\Program.cs,**\Startup.cs,**\*.spec.ts,**\*.spec.tsx,**\Mock*.ts"
+$sonarexclusion = "coverage\**\*,**\*.xml,**\*.js,tscoverage\**\*,**\jestsetup.ts,**\*.ico,**\Program.cs,**\Startup.cs,**\*.spec.ts,**\*.spec.tsx"
 $source = "https://github.com/SonarSource/sonar-scanner-msbuild/releases/download/4.2.0.1214/sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 $destination = "$env:APPVEYOR_BUILD_FOLDER\sonar-scanner-msbuild-4.2.0.1214-netcoreapp2.0.zip"
 Invoke-WebRequest $source -OutFile $destination
