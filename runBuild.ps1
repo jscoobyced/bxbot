@@ -38,6 +38,7 @@ if ( ("master" -Eq $env:APPVEYOR_REPO_BRANCH) -And ( -Not $env:APPVEYOR_PULL_REQ
         /d:sonar.organization="jscoobyced-github" `
         /d:sonar.host.url="https://sonarcloud.io" `
         /d:sonar.cs.opencover.reportsPaths="coverage.xml" `
+        /d:sonar.javascript.lcov.reportPaths="tscoverage\lcov.info" `
         /d:sonar.login="$sonarkey" `
         /d:sonar.exclusions="coverage\**\*,**\*.xml,**\*.js"
 }
@@ -72,6 +73,10 @@ dotnet build
     -output:"coverage.xml"
 
 codecov -f coverage.xml
+
+Set-Location bxbot
+yarn test:coverage
+Set-Location ..
 
 if ( $runSonar )
 {
