@@ -12,6 +12,11 @@
       "^.+\\.tsx?$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "coverageReporters": [
+      "lcov",
+      "text"
+    ],
+    "coverageDirectory": "tscoverage",
     "moduleFileExtensions": [
       "ts",
       "tsx",

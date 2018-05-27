@@ -1,6 +1,7 @@
 bin/
 obj/
 coverage/
+tscoverage/
 coverage.xml
 results.xml
 bxbot/wwwroot/dist/
