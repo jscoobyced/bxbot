@@ -6,6 +6,10 @@ import { MockRouterProps } from '../../MockRouterProps';
 
 describe('Home component', () => {
     var routerProps = MockRouterProps.getMockRouterProps<{}>({});
+    routerProps.history.block();
+    routerProps.history.createHref({});
+    routerProps.history.listen(MockRouterProps.listener);
+    
     it('should render without throwing an error', () => {
         expect(shallow(<Home match={routerProps.match} history={routerProps.history} location={routerProps.location} />)
             .exists())
