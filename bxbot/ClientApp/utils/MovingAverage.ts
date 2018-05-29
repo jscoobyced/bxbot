@@ -1,6 +1,10 @@
 export class MovingAverage {
 
     public ma(data: Array<number>, size: number): Array<number> {
+        if(data == undefined || data.length === 0 ) {
+            return [];
+        }
+        
         const isNumber = subject => typeof subject === 'number';
         const length = data.length;
         const ret: Array<number> = [];

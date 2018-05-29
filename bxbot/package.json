@@ -33,6 +33,7 @@
   "devDependencies": {
     "@types/enzyme": "3.1.10",
     "@types/enzyme-adapter-react-15": "1.0.2",
+    "@types/google.visualization": "0.0.41",
     "@types/history": "4.6.0",
     "@types/jest": "22.2.3",
     "@types/react": "15.0.38",
@@ -40,6 +41,7 @@
     "@types/react-hot-loader": "3.0.3",
     "@types/react-router": "4.0.12",
     "@types/react-router-dom": "4.0.5",
+    "@types/react-test-renderer": "^16.0.1",
     "@types/webpack-env": "1.13.0",
     "aspnet-webpack": "2.0.1",
     "aspnet-webpack-react": "3.0.0",
@@ -52,7 +54,6 @@
     "event-source-polyfill": "0.0.9",
     "extract-text-webpack-plugin": "2.1.2",
     "file-loader": "0.11.2",
-    "google-charts": "1.1.0",
     "isomorphic-fetch": "2.2.1",
     "jest": "22.4.4",
     "jest-enzyme": "6.0.0",

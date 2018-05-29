@@ -1,16 +1,18 @@
-import { GoogleCharts } from 'google-charts';
+import { ChartFactory } from './ChartFactory';
 
 export class CandleChart {
     private _chartData: Array<any>;
     private _chartElement: string;
+    private _chartFactory: ChartFactory;
 
     public constructor(chartData: Array<any>, chartElement: string) {
         this._chartData = chartData;
         this._chartElement = chartElement;
+        this._chartFactory = new ChartFactory();
     }
 
     public drawChart() {
-        const data: Array<any> = GoogleCharts.api.visualization.arrayToDataTable(this._chartData, true);
+        const data = this._chartFactory.arrayToDataTable(this._chartData);
         const options = {
             legend: 'none',
             height: 800,
@@ -39,8 +41,6 @@ export class CandleChart {
             }
         };
 
-        const chart = new GoogleCharts.api.visualization.CandlestickChart(document.getElementById(this._chartElement));
-
-        chart.draw(data, options);
+        this._chartFactory.drawCandleChart(data, this._chartElement, options);
     }
 }

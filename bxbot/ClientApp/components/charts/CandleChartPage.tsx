@@ -5,11 +5,14 @@ import { Pairing, FetchDataState } from './Models';
 import { CandleChart } from './CandleChart';
 import { GoogleChartInitializer } from './GoogleChartInitializer';
 import { BollingerBand } from "../../utils/Bollinger";
+import { DataFormatter } from './DataFormatter';
 
 export class CandleChartPage extends React.Component<RouteComponentProps<{}>, FetchDataState> {
     private static ChartElement: string = "candle_div";
     private _candleChart: CandleChart = new CandleChart([], "");
     private _bollingerSize: number = 20;
+    private _dataFormatter: DataFormatter = new DataFormatter();
+    private _chartData: any;
 
     constructor() {
         super();
@@ -20,38 +23,18 @@ export class CandleChartPage extends React.Component<RouteComponentProps<{}>, Fe
         fetch('api/Data/pairing/1/5')
             .then(response => response.json() as Promise<Pairing[]>)
             .then(data => {
-                this._candleChart = new CandleChart(this.formatData(data), CandleChartPage.ChartElement);
-                this.setState({ loading: !GoogleChartInitializer.IsReady() });
+                this._chartData = this._dataFormatter.formatBollingerData(data, this._bollingerSize);
+                if (!GoogleChartInitializer.IsReady()) {
+                    new GoogleChartInitializer().Init(this.drawChart);
+                } else {
+                    this.drawChart();
+                }
             });
     }
 
-    private formatData(chartData: Array<Pairing>): Array<any> {
-        const lengthToShow = 100;
-        const startIndex = Math.max(0, chartData.length - lengthToShow);
-        const bollingerStartIndex = Math.max(0, chartData.length - (this._bollingerSize + lengthToShow));
-        const formatedData = new Array<any>();
-        const closePrice = new Array<any>();
-        for (let i = bollingerStartIndex; i < chartData.length; i++) {
-            closePrice.push(chartData[i].close);
-        }
-
-        const bollingerBand = new BollingerBand().bb(closePrice);
-        let bollingerBandIndex = this._bollingerSize - 1;
-        for (let i = startIndex; i < chartData.length; i++) {
-            formatedData.push([
-                DateUtil.toHumanHours(new Date(chartData[i].timestamp)),
-                chartData[i].low,
-                chartData[i].open,
-                chartData[i].close,
-                chartData[i].high,
-                bollingerBand.lower[bollingerBandIndex],
-                bollingerBand.upper[bollingerBandIndex],
-                bollingerBand.mid[bollingerBandIndex]
-            ]);
-            bollingerBandIndex++;
-        }
-
-        return formatedData;
+    private drawChart = () => {
+        this._candleChart = new CandleChart(this._chartData, CandleChartPage.ChartElement);
+        this.setState({ loading: false });
     }
 
     public render(): JSX.Element {
