@@ -18,7 +18,8 @@ describe('Charts models', () => {
     it('can create and modify a FetchDataState instance', () => {
         let fetchDataState:FetchDataState = {
             pairings: [],
-            loading: true
+            loading: true,
+            url: ''
         };
         fetchDataState.loading = false;
         expect(fetchDataState.loading).toBe(false)

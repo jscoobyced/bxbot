@@ -42,7 +42,6 @@ namespace bxbot.tests
             viewResult.Model.Should().BeNull("because the default ViewResult from HomeController doesn't contains model.");
             viewResult.ViewName.Should().BeNull("because the default view name from the HomeController is not set.");
             viewResult.ViewData.Should().NotBeNull("because there data have been set.");
-            viewResult.ViewData.Should().ContainKey("RequestId", "because the \"RequestId\" view data has been set.");
         }
     }
 }
