@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout component should match snapshot 1`] = `
+<div
+  className="main-nav"
+>
+  <div
+    className="navbar navbar-inverse"
+  >
+    <div
+      className="navbar-header"
+    >
+      <button
+        className="navbar-toggle"
+        data-target=".navbar-collapse"
+        data-toggle="collapse"
+        type="button"
+      >
+        <span
+          className="sr-only"
+        >
+          Toggle navigation
+        </span>
+        <span
+          className="icon-bar"
+        />
+        <span
+          className="icon-bar"
+        />
+        <span
+          className="icon-bar"
+        />
+      </button>
+      <Link
+        className="navbar-brand"
+        replace={false}
+        to="/"
+      >
+        bxbot
+      </Link>
+    </div>
+    <div
+      className="clearfix"
+    />
+    <div
+      className="navbar-collapse collapse"
+    >
+      <ul
+        className="nav navbar-nav"
+      >
+        <li>
+          <NavLink
+            activeClassName="active"
+            exact={true}
+            to="/"
+          >
+            <span
+              className="glyphicon glyphicon-home"
+            />
+             Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            activeClassName="active"
+            to="/candle"
+          >
+            <span
+              className="glyphicon glyphicon-th-list"
+            />
+             CandleChart
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

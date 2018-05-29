@@ -33,6 +33,10 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
+"@types/google.visualization@0.0.41":
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/@types/google.visualization/-/google.visualization-0.0.41.tgz#cd4858a66fd039e31586ef3989c59ab0e42d0392"
+
 "@types/history@*", "@types/history@4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.0.tgz#093d67ed780d889c9543f6dca24ebee0b6b9fc45"
@@ -70,6 +74,12 @@
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.12.tgz#7ccf3433741393e22ede149b5cd733abfe594ffc"
   dependencies:
     "@types/history" "*"
+    "@types/react" "*"
+
+"@types/react-test-renderer@^16.0.1":
+  version "16.0.1"
+  resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-16.0.1.tgz#36ee8c4fe33c61d460ad0e7bc42a2d0ddcc775a1"
+  dependencies:
     "@types/react" "*"
 
 "@types/react@*", "@types/react@15.0.38":
@@ -2025,10 +2035,6 @@ global@^4.3.0:
 globals@^9.18.0:
   version "9.18.0"
   resolved "https://registry.yarnpkg.com/globals/-/globals-9.18.0.tgz#aa3896b3e69b487f17e31ed2143d69a8e30c2d8a"
-
-google-charts@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/google-charts/-/google-charts-1.1.0.tgz#d785ee9397bab07a3db069e986a845057935ecd8"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   version "4.1.11"

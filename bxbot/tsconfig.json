@@ -9,7 +9,11 @@
     "skipDefaultLibCheck": true,
     "strict": true,
     "noImplicitAny": false,
-    "types": ["webpack-env"]
+    "types": ["webpack-env"],
+    "lib": [
+      "es2015",
+      "dom"
+    ]
   },
   "exclude": [
       "bin",

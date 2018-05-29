@@ -8,7 +8,6 @@ import * as RoutesModule from './routes';
 import {GoogleChartInitializer} from './components/charts/GoogleChartInitializer';
 
 let routes = RoutesModule.routes;
-new GoogleChartInitializer();
 
 function renderApp() {
     const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href')!;
