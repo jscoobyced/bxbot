@@ -1,9 +1,9 @@
 AppVeyor build: [![Build status](https://ci.appveyor.com/api/projects/status/ciposawo503g60ej/branch/master?svg=true)](https://ci.appveyor.com/project/jscoobyced/bxbot/branch/master)  
 Codecov C# code coverage: [![codecov](https://codecov.io/gh/jscoobyced/bxbot/branch/master/graph/badge.svg)](https://codecov.io/gh/jscoobyced/bxbot)  
-SonarCloud statuses: [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=alert_status&v=9)](https://sonarcloud.io/dashboard?id=bxbot)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=bugs&v=9)](https://sonarcloud.io/dashboard?id=bxbot)
-[![Code Smell](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=code_smells&v=9)](https://sonarcloud.io/dashboard?id=bxbot)
-[![Code Coverage](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=coverage&v=9)](https://sonarcloud.io/dashboard?id=bxbot)
+SonarCloud statuses: [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=alert_status&v=10)](https://sonarcloud.io/dashboard?id=bxbot)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=bugs&v=10)](https://sonarcloud.io/dashboard?id=bxbot)
+[![Code Smell](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=code_smells&v=10)](https://sonarcloud.io/dashboard?id=bxbot)
+[![Code Coverage](https://sonarcloud.io/api/project_badges/measure?project=bxbot&metric=coverage&v=10)](https://sonarcloud.io/dashboard?id=bxbot)
 
 # BX BOT
 Application that help tracing current currency values using [bx.co.th](http://bx.co.th) ticker data.
