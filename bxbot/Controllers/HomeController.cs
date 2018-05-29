@@ -12,7 +12,6 @@ namespace bxbot.Controllers
 
         public IActionResult Error()
         {
-            ViewData["RequestId"] = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
             return View();
         }
     }

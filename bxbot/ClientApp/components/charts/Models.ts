@@ -9,4 +9,5 @@ export interface Pairing {
 export interface FetchDataState {
     pairings: Pairing[];
     loading: boolean;
+    url: string;
 }
