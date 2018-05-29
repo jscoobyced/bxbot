@@ -16,11 +16,11 @@ export class CandleChartPage extends React.Component<RouteComponentProps<{}>, Fe
 
     constructor() {
         super();
-        this.state = { pairings: [], loading: true };
+        this.state = { pairings: [], loading: true, url: 'api/Data/pairing/1/5' };
     }
 
     public componentDidMount() {
-        fetch('api/Data/pairing/1/5')
+        fetch(this.state.url)
             .then(response => response.json() as Promise<Pairing[]>)
             .then(data => {
                 this._chartData = this._dataFormatter.formatBollingerData(data, this._bollingerSize);

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`routes should match snapshot 1`] = `
+<div
+  className="container-fluid"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-sm-1"
+    >
+      <NavMenu />
+    </div>
+    <div
+      className="col-sm-11"
+    >
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/candle"
+      />
+    </div>
+  </div>
+</div>
+`;

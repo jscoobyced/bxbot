@@ -2,7 +2,7 @@ import { } from 'google.visualization';
 
 export class GoogleChartInitializer {
 
-    public Init(render: Function) {
+    public Init(render: Function): boolean {
         (<any>window).JSGoogleChart = false;
         (<any>window).JSGoogleChartFunction = render;
         const body = document.getElementsByTagName('body')[0]
@@ -10,7 +10,8 @@ export class GoogleChartInitializer {
         script.type = 'text/javascript'
         script.src = 'https://www.gstatic.com/charts/loader.js'
         script.onload = this.Load;
-        body.appendChild(script)
+        body.appendChild(script);
+        return true;
     }
 
     private Load() {
