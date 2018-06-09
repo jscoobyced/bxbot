@@ -34,7 +34,7 @@
     "@types/enzyme": "3.1.10",
     "@types/enzyme-adapter-react-15": "1.0.2",
     "@types/google.visualization": "0.0.41",
-    "@types/history": "4.6.0",
+    "@types/history": "4.6.2",
     "@types/jest": "22.2.3",
     "@types/react": "15.0.38",
     "@types/react-dom": "15.5.1",
@@ -70,5 +70,10 @@
     "url-loader": "0.5.9",
     "webpack": "2.5.1",
     "webpack-hot-middleware": "2.18.2"
+  },
+  "resolutions": {
+    "@types/history": "4.6.2",
+    "@types/react": "15.0.38",
+    "@types/react-router": "4.0.12"
   }
 }

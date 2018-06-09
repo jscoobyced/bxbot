@@ -7,3 +7,4 @@ results.xml
 bxbot/wwwroot/dist/
 node_modules/
 .sonarqube/
+yarn.lock
