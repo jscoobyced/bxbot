@@ -65,7 +65,7 @@ if ( $pullRequestNumber )
         /d:sonar.login="$sonarkey" `
         /d:sonar.exclusions="$sonarexclusion" `
         /d:sonar.analysis.mode=issues `
-        /d:sonar.github.pullRequest=$pullrequest `
+        /d:sonar.github.pullRequest=$pullRequestNumber `
         /d:sonar.github.repository="$repoName" `
         /d:sonar.github.oauth=$ghkey
 }
