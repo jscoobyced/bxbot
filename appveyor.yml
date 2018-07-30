@@ -20,17 +20,17 @@ dotnet_csproj:
   informational_version: '{version}'
 before_build:
 - ps: >-
-    & .\before_build.ps1   
+    & .\scripts\before_build.ps1   
 build:
-  project: stage5\opensourceci.sln
+  project: bxbot.sln
   publish_wap_xcopy: true
   verbosity: minimal
 test_script:
 - ps: >-
-    & .\test_script.ps1
+    & .\scripts\test_script.ps1
 after_test:
 - ps: >-
-    & .\after_test.ps1   
+    & .\scripts\after_test.ps1   
 artifacts:
 - path: publish
   type: Zip
