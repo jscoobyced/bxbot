@@ -1,10 +1,15 @@
 version: 1.0.{build}
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+skip_branch_with_pr: true
 skip_tags: true
 environment:
-  GitHubSonarKey:
-    secure: SY6rvHCSxikpJpkcDR/JsnMDc41rD9+L2w0pr370Qd1cUZJJJY4rxVISzdmTf1fG
+  SonarExclusions: coverage\**\*,**\*.xml,**\*.js,tscoverage\**\*,**\jestsetup.ts,**\*.ico,**\Program.cs,**\Startup.cs,**\node_modules\*,**\wwwroot\dist\*
   SonarKey:
     secure: 12QqwTL16f53WwrFtClle28ZDS3BsHmEheUeMyT6r1BnReEnO70Vx7mzGHGLBuB9
+  SonarGithubKey:
+    secure: SY6rvHCSxikpJpkcDR/JsnMDc41rD9+L2w0pr370Qd1cUZJJJY4rxVISzdmTf1fG
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -13,7 +18,32 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-build_script:
+before_build:
 - ps: >-
-    .\runBuild.ps1
-deploy: off
+    & .\before_build.ps1   
+build:
+  project: stage5\opensourceci.sln
+  publish_wap_xcopy: true
+  verbosity: minimal
+test_script:
+- ps: >-
+    & .\test_script.ps1
+after_test:
+- ps: >-
+    & .\after_test.ps1   
+artifacts:
+- path: publish
+  type: Zip
+deploy:
+- provider: AzureAppServiceZipDeploy
+  appservice_environment: false
+  website: techatagoda180731
+  username: techatagoda180731
+  password:
+    secure: prLg5k/AB3sdQukBFvOYkA==
+  artifact: publish.zip
+notifications:
+- provider: GitHubPullRequest
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: true
