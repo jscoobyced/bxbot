@@ -1,19 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (env) => {
-    const extractCSS = new ExtractTextPlugin('vendor.css');
-    const isDevBuild = !(env && env.prod);
     return [{
         stats: { modules: false },
+        mode: 'development',
         resolve: {
             extensions: [ '.js' ]
         },
         module: {
             rules: [
                 { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' },
-                { test: /\.css(\?|$)/, use: extractCSS.extract([ isDevBuild ? 'css-loader' : 'css-loader?minimize' ]) }
+                { test: /\.css(\?|$)/, use: [ 'css-loader'] }
             ]
         },
         entry: {
@@ -26,17 +24,14 @@ module.exports = (env) => {
             library: '[name]_[hash]',
         },
         plugins: [
-            extractCSS,
             new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
             new webpack.DllPlugin({
                 path: path.join(__dirname, 'wwwroot', 'dist', '[name]-manifest.json'),
                 name: '[name]_[hash]'
             }),
             new webpack.DefinePlugin({
-                'process.env.NODE_ENV': isDevBuild ? '"development"' : '"production"'
+                'process.env.NODE_ENV': '"development"'
             })
-        ].concat(isDevBuild ? [] : [
-            new webpack.optimize.UglifyJsPlugin()
-        ])
+        ]
     }];
 };

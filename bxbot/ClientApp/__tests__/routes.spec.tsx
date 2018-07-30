@@ -1,5 +1,5 @@
 import * as RoutesModule from '../routes';
-import { } from 'jest';
+import jest from 'jest';
 import * as ShallowRenderer from 'react-test-renderer/shallow';
 
 describe('routes', () => {
