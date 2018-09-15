@@ -25,12 +25,12 @@ before_build:
 - ps: >-
     & .\scripts\before_build.ps1   
 build:
-  project: .\src\bxbot.sln
+  project: .\bxbot.sln
   publish_wap_xcopy: true
   verbosity: minimal
 test_script:
 - ps: >-
-    & .\scripts\run_tests.ps1
+    & ..\scripts\run_tests.ps1
 after_test:
 - ps: >-
     & .\scripts\after_test.ps1   
