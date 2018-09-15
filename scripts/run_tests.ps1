@@ -1,3 +1,5 @@
+Set-Location src
+
 & $env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
 -register:user `
 -oldStyle `

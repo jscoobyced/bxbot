@@ -30,4 +30,6 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /d:sonar.cs.opencover.reportsPaths=coverage.xml `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions"
-} 
+}
+
+Set-Location ..
