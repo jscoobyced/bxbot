@@ -1,0 +1,12 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/dist<%=htmlWebpackPlugin.files.chunks.main.css %>">
+}
+<div id="app-root">Something awesome is coming...</div>
+
+@section scripts {
+    <script src="~/dist<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+}
