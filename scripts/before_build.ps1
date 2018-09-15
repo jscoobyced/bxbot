@@ -1,6 +1,6 @@
 Set-Location src\ClientApp
-yarn install
-yarn webpack
+yarn --silent --no-progress install
+yarn --silent --no-progress webpack
 Set-Location ..
 dotnet restore
 choco install --no-progress sonarscanner-msbuild-netcoreapp2.0

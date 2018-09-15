@@ -25,7 +25,7 @@ before_build:
 - ps: >-
     & .\scripts\before_build.ps1   
 build:
-  project: .\bxbot.sln
+  project: .\src\bxbot.sln
   publish_wap_xcopy: true
   verbosity: minimal
 test_script:
