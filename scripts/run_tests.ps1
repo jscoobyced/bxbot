@@ -7,7 +7,7 @@ Set-Location src
 -oldStyle `
 -target:"dotnet.exe" `
 -targetargs:"test bxbot-tests\bxbot-tests.csproj" `
--filter:"+[bxbot*]* +[tests*]*" `
+-filter:"+[bxbot*]* +[tests*]* -[bxbot*]*Program -[bxbot*]*Startup" `
 -output:"coverage.xml"
 
 codecov -f coverage.xml
