@@ -1,8 +1,16 @@
+Get-Location .
+Write-Host -------------------------------------- Build start
+Write-Host -------------------------------------- ClientApp
+
 Set-Location src/ClientApp
 yarn --silent --no-progress install
 yarn --silent --no-progress webpack
-
 Set-Location ..
+
+Write-Host -------------------------------------- ClientApp done
+
+Write-Host -------------------------------------- Netcore
+
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
     dotnet "C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\SonarScanner.MSBuild.dll" begin `
@@ -33,3 +41,8 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 dotnet restore
 dotnet build
 Set-Location ..
+
+Write-Host -------------------------------------- Netcore done
+Write-Host -------------------------------------- Build complete
+
+Get-Location .

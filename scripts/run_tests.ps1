@@ -1,3 +1,8 @@
+Get-Location .
+Write-Host -------------------------------------- Run test
+
+Set-Location src
+
 & $env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
 -register:user `
 -oldStyle `
@@ -14,3 +19,5 @@ if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_N
 }
 
 Set-Location ..
+
+Write-Host -------------------------------------- Run test complete
