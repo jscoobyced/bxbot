@@ -1,4 +1,3 @@
-Get-Location
 Write-Host -------------------------------------- Build start
 Write-Host -------------------------------------- ClientApp
 
@@ -44,5 +43,3 @@ Set-Location ..
 
 Write-Host -------------------------------------- Netcore done
 Write-Host -------------------------------------- Build complete
-
-Get-Location
