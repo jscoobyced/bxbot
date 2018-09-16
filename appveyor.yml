@@ -29,7 +29,7 @@ build_script:
     & .\scripts\build.ps1
 test_script:
 - ps: >-
-    & ..\scripts\run_tests.ps1
+    & .\scripts\run_tests.ps1
 after_test:
 - ps: >-
     & .\scripts\after_test.ps1   
