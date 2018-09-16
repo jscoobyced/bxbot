@@ -6,7 +6,6 @@
 -filter:"+[bxbot*]* +[tests*]*" `
 -output:"coverage.xml"
 
-choco install --no-progress codecov
 codecov -f coverage.xml
 
 if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_NUMBER )
