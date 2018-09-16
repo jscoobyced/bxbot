@@ -42,7 +42,7 @@ deploy:
   website: bxbot
   username: bxbot
   password:
-    secure: DragQlVf8N0ggCLRhMjlCA==
+    secure: 7Abb6Ut61PC0yff1dUy1HfYCOLwckof/tWSofCDbvqs/AVUtkbnNIvPzl2bt4fwj
   artifact: publish.zip
 notifications:
 - provider: GitHubPullRequest
