@@ -38,6 +38,9 @@ artifacts:
   type: Zip
 deploy:
 - provider: AzureAppServiceZipDeploy
+  name: production
+  on:
+    branch: master
   appservice_environment: false
   website: bxbot
   username: bxbot
