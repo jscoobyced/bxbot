@@ -1,4 +1,4 @@
-Get-Location .
+Get-Location
 Write-Host -------------------------------------- Run test
 
 Set-Location src
