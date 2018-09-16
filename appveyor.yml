@@ -24,9 +24,9 @@ dotnet_csproj:
 before_build:
 - ps: >-
     & .\scripts\before_build.ps1   
-build:
+build_script:
 - ps: >-
-    & .\scripts\build.ps1   
+    & .\scripts\build.ps1
 test_script:
 - ps: >-
     & ..\scripts\run_tests.ps1
