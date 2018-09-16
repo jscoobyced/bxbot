@@ -27,8 +27,6 @@ before_build:
 build:
 - ps: >-
     & .\scripts\build.ps1   
-  publish_wap_xcopy: true
-  verbosity: minimal
 test_script:
 - ps: >-
     & ..\scripts\run_tests.ps1
