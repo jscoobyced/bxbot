@@ -39,10 +39,10 @@ artifacts:
 deploy:
 - provider: AzureAppServiceZipDeploy
   appservice_environment: false
-  website: techatagoda180731
-  username: techatagoda180731
+  website: bxbot
+  username: bxbot
   password:
-    secure: prLg5k/AB3sdQukBFvOYkA==
+    secure: DragQlVf8N0ggCLRhMjlCA==
   artifact: publish.zip
 notifications:
 - provider: GitHubPullRequest
