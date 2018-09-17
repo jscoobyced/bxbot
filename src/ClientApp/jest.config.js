@@ -20,6 +20,6 @@ module.exports = {
     "lcov",
     "text"
   ],
-  "coverageDirectory": "../tscoverage",
+  "coverageDirectory": "tscoverage",
 
 }
