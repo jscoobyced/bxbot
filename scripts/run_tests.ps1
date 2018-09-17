@@ -18,7 +18,8 @@ if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_N
 {
     dotnet "C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\SonarScanner.MSBuild.dll" end /d:sonar.login="$env:SonarKey"
 }
-
+Get-Location
+dir
 Set-Location ..
 
 Write-Host -------------------------------------- Run test complete -----------
