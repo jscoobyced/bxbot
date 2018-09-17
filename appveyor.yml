@@ -21,34 +21,36 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-before_build:
-- ps: >-
-    & .\scripts\before_build.ps1   
+install:
+  - choco install --no-progress sonarscanner-msbuild-netcoreapp2.0
+  - choco install --no-progress codecov
+  - cmd: SET NODE_PATH=%AppData%\npm\node_modules 
+  - cmd: yarn install -g typescript
 build_script:
-- ps: >-
-    & .\scripts\build.ps1
+  - ps: >-
+      & .\scripts\build.ps1
 test_script:
-- ps: >-
-    & .\scripts\run_tests.ps1
+  - ps: >-
+      & .\scripts\run_tests.ps1
 after_test:
-- ps: >-
-    & .\scripts\after_test.ps1   
+  - ps: >-
+      & .\scripts\after_test.ps1   
 artifacts:
-- path: publish
-  type: Zip
+  - path: publish
+    type: Zip
 deploy:
-- provider: AzureAppServiceZipDeploy
-  name: production
-  on:
-    branch: master
-  appservice_environment: false
-  website: bxbot
-  username: bxbot
-  password:
-    secure: 7Abb6Ut61PC0yff1dUy1HfYCOLwckof/tWSofCDbvqs/AVUtkbnNIvPzl2bt4fwj
-  artifact: publish.zip
+  - provider: AzureAppServiceZipDeploy
+    name: production
+    on:
+      branch: master
+    appservice_environment: false
+    website: bxbot
+    username: bxbot
+    password:
+      secure: 7Abb6Ut61PC0yff1dUy1HfYCOLwckof/tWSofCDbvqs/AVUtkbnNIvPzl2bt4fwj
+    artifact: publish.zip
 notifications:
-- provider: GitHubPullRequest
-  on_build_success: true
-  on_build_failure: true
-  on_build_status_changed: true
+  - provider: GitHubPullRequest
+    on_build_success: true
+    on_build_failure: true
+    on_build_status_changed: true
