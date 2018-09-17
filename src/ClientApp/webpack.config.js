@@ -1,11 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 const TSLintPlugin = require('tslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const GitRevisionWebpackPlugin = require('git-revision-webpack-plugin');
 
+const gitRevisionWebpackPlugin = new GitRevisionWebpackPlugin();
 const root = path.join(__dirname, '../bxbot/wwwroot');
 const dist = path.join(root, 'dist');
 
@@ -17,6 +20,7 @@ module.exports = {
     splitChunks: false,
   },
   entry: {
+    'vendor': ['react', 'react-dom', 'react-router-dom'],
     'main': './src/index.tsx'
   },
   output: {
@@ -24,6 +28,18 @@ module.exports = {
     path: dist,
     publicPath: '/',
     filename: '[name].[chunkhash].js'
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: 'vendor',
+          enforce: true
+        },
+      }
+    }
   },
   resolve: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
   module: {
@@ -48,6 +64,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(dist, {
       root: root
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'VERSION': JSON.stringify(gitRevisionWebpackPlugin.version())
+      }
     }),
     new TSLintPlugin({
       files: ['./src/**/*.ts', './src/**/*.tsx']

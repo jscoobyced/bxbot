@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Footer } from './Footer';
 
 export interface LayoutProps {
     children?: React.ReactNode;
@@ -8,15 +9,16 @@ export interface LayoutProps {
 export class Layout extends React.Component<LayoutProps, {}> {
     public render() {
         return <div>
-            <div>
+            <main>
                 <NavLink to={'/'}>
                     Home
                 </NavLink> |&nbsp;
                 <NavLink to={'/candle'}>
                     CandleChart
                 </NavLink>
-            </div>
+            </main>
             {this.props.children}
+            <Footer />
         </div>;
     }
 }

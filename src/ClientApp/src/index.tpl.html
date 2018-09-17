@@ -12,6 +12,7 @@
     <!-- this is where react renders into -->
     <div id="app-root">Something awesome is coming...</div>
 
+    <script src="<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
     <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
   </body>
 </html>

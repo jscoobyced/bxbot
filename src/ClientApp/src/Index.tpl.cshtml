@@ -8,5 +8,6 @@
 <div id="app-root">Something awesome is coming...</div>
 
 @section scripts {
+    <script src="~/dist<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
     <script src="~/dist<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
 }
