@@ -1,14 +1,13 @@
-Write-Host -------------------------------------- Build start
-Write-Host -------------------------------------- ClientApp
+Write-Host -------------------------------------- Build start -----------------
+Write-Host -------------------------------------- ClientApp -------------------
 
 Set-Location src/ClientApp
 yarn --silent --no-progress install
 yarn --silent --no-progress webpack
 Set-Location ..
 
-Write-Host -------------------------------------- ClientApp done
-
-Write-Host -------------------------------------- Netcore
+Write-Host -------------------------------------- ClientApp done --------------
+Write-Host -------------------------------------- Netcore ---------------------
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
@@ -41,5 +40,5 @@ dotnet restore
 dotnet build
 Set-Location ..
 
-Write-Host -------------------------------------- Netcore done
-Write-Host -------------------------------------- Build complete
+Write-Host -------------------------------------- Netcore done ----------------
+Write-Host -------------------------------------- Build complete --------------
