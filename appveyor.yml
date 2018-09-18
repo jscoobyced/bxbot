@@ -25,7 +25,7 @@ install:
   - choco install --no-progress sonarscanner-msbuild-netcoreapp2.0
   - choco install --no-progress codecov
   - cmd: SET NODE_PATH=%AppData%\npm\node_modules 
-  - cmd: yarn install -g typescript
+  - cmd: yarn install typescript
 build_script:
   - ps: >-
       & .\scripts\build.ps1
