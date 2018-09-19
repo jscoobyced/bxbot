@@ -19,7 +19,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /d:sonar.cs.opencover.reportsPaths=coverage.xml `
     /d:sonar.typescript.lcov.reportPaths="ClientApp/tscoverage/lcov.info" `
     /d:sonar.typescript.tsconfigPath="ClientApp/tsconfig.json" `
-    /d:sonar.typescript.file.suffixes=".ts, .tsx"
+    /d:sonar.typescript.file.suffixes=".ts, .tsx" `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions" `
     /d:sonar.analysis.mode=preview `
@@ -37,7 +37,7 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /d:sonar.cs.opencover.reportsPaths=coverage.xml `
     /d:sonar.typescript.lcov.reportPaths="ClientApp/tscoverage/lcov.info" `
     /d:sonar.typescript.tsconfigPath="ClientApp/tsconfig.json" `
-    /d:sonar.typescript.file.suffixes=".ts, .tsx"
+    /d:sonar.typescript.file.suffixes=".ts, .tsx" `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions"
 }

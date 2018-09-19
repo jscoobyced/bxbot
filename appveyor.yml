@@ -13,6 +13,7 @@ environment:
   SonarOrg: jscoobyced-github
   SonarUrl: https://sonarcloud.io
   SonarProjectKey: bxbot
+  NODE_PATH: src\ClientApp\node_modules
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -24,8 +25,6 @@ dotnet_csproj:
 install:
   - choco install --no-progress sonarscanner-msbuild-netcoreapp2.0
   - choco install --no-progress codecov
-  - cmd: SET NODE_PATH=%AppData%\npm\node_modules 
-  - cmd: yarn install -g typescript
 build_script:
   - ps: >-
       & .\scripts\build.ps1
