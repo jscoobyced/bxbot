@@ -42,7 +42,6 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 
 dotnet restore
 dotnet build
-Set-Location ..
-
+Set-Location ../..
 Write-Host -------------------------------------- Netcore done --------------------------
 Write-Host -------------------------------------- Build complete ------------------------
