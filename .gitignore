@@ -9,4 +9,4 @@ tscoverage/
 .sonarqube/
 **/yarn.lock
 **/publish/
-.nyc_output/
+test-report.xml

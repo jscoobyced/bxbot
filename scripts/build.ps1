@@ -20,6 +20,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `
     /d:sonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    /d:sonar.testExecutionReportPaths=$env:TsReportPath `
     /d:sonar.typescript.tsconfigPath=$env:TsConfig `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions" `
@@ -37,6 +38,7 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `
     /d:sonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    /d:sonar.testExecutionReportPaths=$env:TsReportPath `
     /d:sonar.typescript.tsconfigPath=$env:TsConfig `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions"
