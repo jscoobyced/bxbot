@@ -1,13 +1,13 @@
-Write-Host -------------------------------------- Build start -----------------
-Write-Host -------------------------------------- ClientApp -------------------
+Write-Host -------------------------------------- Build start ---------------------------
+Write-Host -------------------------------------- ClientApp -----------------------------
 
-Set-Location src/ClientApp
+Set-Location src/bxbot/ClientApp
 yarn --silent --no-progress install
 yarn --silent --no-progress webpack
 Set-Location ..
 
-Write-Host -------------------------------------- ClientApp done --------------
-Write-Host -------------------------------------- Netcore ---------------------
+Write-Host -------------------------------------- ClientApp done ------------------------
+Write-Host -------------------------------------- Netcore -------------------------------
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
@@ -17,8 +17,8 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.cs.opencover.reportsPaths=coverage.xml `
-    /d:sonar.typescript.lcov.reportPaths=../ClientApp/tscoverage/lcov.info `
-    /d:sonar.typescript.tsconfigPath=../ClientApp/tsconfig.json `
+    /d:sonar.typescript.lcov.reportPaths=./ClientApp/tscoverage/lcov.info `
+    /d:sonar.typescript.tsconfigPath=./ClientApp/tsconfig.json `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions" `
     /d:sonar.analysis.mode=preview `
@@ -44,5 +44,5 @@ dotnet restore
 dotnet build
 Set-Location ..
 
-Write-Host -------------------------------------- Netcore done ----------------
-Write-Host -------------------------------------- Build complete --------------
+Write-Host -------------------------------------- Netcore done --------------------------
+Write-Host -------------------------------------- Build complete ------------------------

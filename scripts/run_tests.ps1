@@ -1,8 +1,7 @@
-Write-Host -------------------------------------- Run test --------------------
+Write-Host -------------------------------------- Run test ------------------------------
 
-Set-Location src/ClientApp
+Set-Location src/bxbot/ClientApp
 yarn --silent run test:coverage
-dir
 Set-Location ..
 
 & $env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
@@ -20,7 +19,6 @@ if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_N
     dotnet "C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\SonarScanner.MSBuild.dll" end /d:sonar.login="$env:SonarKey"
 }
 
-dir
 Set-Location ..
 
-Write-Host -------------------------------------- Run test complete -----------
+Write-Host -------------------------------------- Run test complete ---------------------

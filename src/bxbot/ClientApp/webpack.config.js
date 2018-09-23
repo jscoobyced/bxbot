@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GitRevisionWebpackPlugin = require('git-revision-webpack-plugin');
 
 const gitRevisionWebpackPlugin = new GitRevisionWebpackPlugin();
-const root = path.join(__dirname, '../bxbot/wwwroot');
+const root = path.join(__dirname, '../wwwroot');
 const dist = path.join(root, 'dist');
 
 module.exports = {
@@ -87,7 +87,7 @@ module.exports = {
       inject: false,
       hash: true,
       template: './src/Index.tpl.cshtml',
-      filename: '../../Views/Home/Index.cshtml'
+      filename: '../Views/Home/Index.cshtml'
     }),
     new HtmlWebpackPlugin({
       inject: false,
