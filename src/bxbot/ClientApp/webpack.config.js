@@ -87,7 +87,7 @@ module.exports = {
       inject: false,
       hash: true,
       template: './src/Index.tpl.cshtml',
-      filename: '../Views/Home/Index.cshtml'
+      filename: '../../Views/Home/Index.cshtml'
     }),
     new HtmlWebpackPlugin({
       inject: false,
