@@ -20,12 +20,8 @@ export class CandleChartDataService {
                 }
                 return response.json() as Promise<Pairing[]>;
             })
-            .then(response => response)
             .catch((error: Error) => {
-                if (url !== this.defaultUrl) {
-                    return this.fetchData(this.defaultUrl);
-                }
-                return [];
+                throw error;
             });
     }
 }

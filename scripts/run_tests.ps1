@@ -1,8 +1,12 @@
 Write-Host -------------------------------------- Run test ------------------------------
 
+Write-Host -------------------------------------- ClientApp -----------------------------
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn --silent run test:coverage
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
+
+Write-Host -------------------------------------- ClientApp done ------------------------
+Write-Host -------------------------------------- Netcore -------------------------------
 
 & $env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
 -register:user `
@@ -21,4 +25,5 @@ if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_N
 
 Set-Location $env:APPVEYOR_BUILD_FOLDER
 
+Write-Host -------------------------------------- Netcore done --------------------------
 Write-Host -------------------------------------- Run test complete ---------------------

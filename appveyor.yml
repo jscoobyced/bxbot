@@ -41,7 +41,7 @@ test_script:
       & .\scripts\run_tests.ps1
 after_test:
   - ps: >-
-      & .\scripts\after_test.ps1   
+      & .\scripts\after_test.ps1
 artifacts:
   - path: publish
     type: Zip
