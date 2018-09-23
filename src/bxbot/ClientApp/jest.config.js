@@ -1,12 +1,12 @@
 module.exports = {
-  "roots": [
+  roots: [
     "<rootDir>/src"
   ],
-  "transform": {
+  transform: {
     "^.+\\.tsx?$": "ts-jest"
   },
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
-  "moduleFileExtensions": [
+  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$",
+  moduleFileExtensions: [
     "ts",
     "tsx",
     "js",
@@ -14,11 +14,12 @@ module.exports = {
     "json",
     "node"
   ],
-  "snapshotSerializers": ["enzyme-to-json/serializer"],
-  "setupTestFrameworkScriptFile": "<rootDir>/tests/setupEnzyme.ts",
-  "coverageReporters": [
+  snapshotSerializers: ["enzyme-to-json/serializer"],
+  setupTestFrameworkScriptFile: "<rootDir>/tests/setupEnzyme.ts",
+  coverageReporters: [
     "lcov",
     "json"
   ],
-  "coverageDirectory": "coverage"
+  coverageDirectory: "coverage",
+  testResultsProcessor: "jest-sonar-reporter"
 }

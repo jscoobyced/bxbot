@@ -17,12 +17,13 @@ environment:
   SonarUrl: https://sonarcloud.io
   SonarProjectKey: bxbot
   NODE_PATH: src\bxbot\ClientApp\node_modules
-  LcovInfo: .\ClientApp\tscoverage\coverage-final.json
+  LcovInfo: .\ClientApp\coverage\lcov.info
   TsConfig: .\ClientApp\tsconfig.json
   CsTarget: test bxbot-tests\bxbot-tests.csproj
   CsFilter: +[bxbot*]* -[bxbot*]*Program -[bxbot*]*Startup +[tests*]*
   CsCoverage: coverage.xml
   TsCoverage: .\coverage\coverage-final.json
+  TsReportPath: test-report.xml
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'

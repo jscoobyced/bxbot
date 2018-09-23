@@ -10,3 +10,4 @@ tscoverage/
 **/yarn.lock
 **/publish/
 .nyc_output/
+test-report.xml
