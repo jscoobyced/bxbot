@@ -20,5 +20,5 @@ module.exports = {
     "lcov",
     "json"
   ],
-  "coverageDirectory": "tscoverage"
+  "coverageDirectory": "coverage"
 }
