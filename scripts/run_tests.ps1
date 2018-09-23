@@ -2,7 +2,6 @@ Write-Host -------------------------------------- Run test ---------------------
 
 Write-Host -------------------------------------- ClientApp -----------------------------
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
-yarn --silent run test
 yarn --silent run test:coverage
 codecov -f $env:TsCoverage
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
