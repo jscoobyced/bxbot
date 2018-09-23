@@ -4,10 +4,12 @@ Write-Host -------------------------------------- ClientApp --------------------
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn --silent --no-progress install
 yarn --silent --no-progress webpack
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:AppPath
+Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 
 Write-Host -------------------------------------- ClientApp done ------------------------
 Write-Host -------------------------------------- Netcore -------------------------------
+
+dotnet restore
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
@@ -40,7 +42,6 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /d:sonar.exclusions="$env:SonarExclusions"
 }
 
-dotnet restore
 dotnet build
 Set-Location $env:APPVEYOR_BUILD_FOLDER
 Write-Host -------------------------------------- Netcore done --------------------------

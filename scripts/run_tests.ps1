@@ -2,7 +2,7 @@ Write-Host -------------------------------------- Run test ---------------------
 
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn --silent run test:coverage
-Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:AppPath
+Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 
 & $env:USERPROFILE\.nuget\packages\opencover\4.6.519\tools\OpenCover.Console.exe `
 -register:user `
