@@ -18,8 +18,7 @@ module.exports = {
   "setupTestFrameworkScriptFile": "<rootDir>/tests/setupEnzyme.ts",
   "coverageReporters": [
     "lcov",
-    "text"
+    "json"
   ],
-  "coverageDirectory": "tscoverage",
-
+  "coverageDirectory": "tscoverage"
 }

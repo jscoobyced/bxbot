@@ -7,7 +7,7 @@ skip_tags: true
 clone_depth: 1
 environment:
   SrcPath: src
-  ClientApp: src/bxbot/ClientApp
+  ClientApp: src\bxbot\ClientApp
   SonarExclusions: coverage\**\*,**\*.xml,**\tscoverage\*,**\*.spec.t*,**\*.js,**\tests\*,**\*.ico,**\Program.cs,**\Startup.cs,**\node_modules\*,**\wwwroot\dist\*
   SonarKey:
     secure: 12QqwTL16f53WwrFtClle28ZDS3BsHmEheUeMyT6r1BnReEnO70Vx7mzGHGLBuB9
@@ -17,12 +17,12 @@ environment:
   SonarUrl: https://sonarcloud.io
   SonarProjectKey: bxbot
   NODE_PATH: src\bxbot\ClientApp\node_modules
-  LcovInfo: ./ClientApp/tscoverage/lcov.info
-  TsConfig: ./ClientApp/tsconfig.json
+  LcovInfo: .\ClientApp\tscoverage\coverage-final.json
+  TsConfig: .\ClientApp\tsconfig.json
   CsTarget: test bxbot-tests\bxbot-tests.csproj
   CsFilter: +[bxbot*]* -[bxbot*]*Program -[bxbot*]*Startup +[tests*]*
   CsCoverage: coverage.xml
-  TsCoverage: ./coverage/coverage-final.json
+  TsCoverage: .\tscoverage\coverage-final.json
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'

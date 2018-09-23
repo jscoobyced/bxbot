@@ -78,8 +78,7 @@ module.exports = {
         from: './src/data.json',
         to: dist
       },
-    ],
-      {}),
+    ]),
     new MiniCssExtractPlugin({
       filename: 'style.[contenthash].css',
     }),
