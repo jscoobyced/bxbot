@@ -1,10 +1,10 @@
 Write-Host -------------------------------------- Build start ---------------------------
 Write-Host -------------------------------------- ClientApp -----------------------------
 
-Set-Location src/bxbot/ClientApp
+Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn --silent --no-progress install
 yarn --silent --no-progress webpack
-Set-Location ..
+Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:AppPath
 
 Write-Host -------------------------------------- ClientApp done ------------------------
 Write-Host -------------------------------------- Netcore -------------------------------
@@ -16,9 +16,9 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /v:$env:APPVEYOR_BUILD_VERSION `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
-    /d:sonar.cs.opencover.reportsPaths=coverage.xml `
-    /d:sonar.typescript.lcov.reportPaths=./ClientApp/tscoverage/lcov.info `
-    /d:sonar.typescript.tsconfigPath=./ClientApp/tsconfig.json `
+    /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `
+    /d:sonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    /d:sonar.typescript.tsconfigPath=$env:TsConfig `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions" `
     /d:sonar.analysis.mode=preview `
@@ -33,15 +33,15 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /v:$env:APPVEYOR_BUILD_VERSION `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
-    /d:sonar.cs.opencover.reportsPaths=coverage.xml `
-    /d:sonar.typescript.lcov.reportPaths=../ClientApp/tscoverage/lcov.info `
-    /d:sonar.typescript.tsconfigPath=../ClientApp/tsconfig.json `
+    /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `
+    /d:sonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    /d:sonar.typescript.tsconfigPath=$env:TsConfig `
     /d:sonar.login=$env:SonarKey `
     /d:sonar.exclusions="$env:SonarExclusions"
 }
 
 dotnet restore
 dotnet build
-Set-Location ../..
+Set-Location $env:APPVEYOR_BUILD_FOLDER
 Write-Host -------------------------------------- Netcore done --------------------------
 Write-Host -------------------------------------- Build complete ------------------------

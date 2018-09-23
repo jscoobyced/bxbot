@@ -6,6 +6,9 @@ skip_branch_with_pr: true
 skip_tags: true
 clone_depth: 1
 environment:
+  SrcPath: src
+  ClientApp: src/bxbot/ClientApp
+  AppPath: src/bxbot
   SonarExclusions: coverage\**\*,**\*.xml,**\tscoverage\*,**\*.js,**\jestsetup.ts,**\*.ico,**\Program.cs,**\Startup.cs,**\node_modules\*,**\wwwroot\dist\*
   SonarKey:
     secure: 12QqwTL16f53WwrFtClle28ZDS3BsHmEheUeMyT6r1BnReEnO70Vx7mzGHGLBuB9
@@ -15,6 +18,11 @@ environment:
   SonarUrl: https://sonarcloud.io
   SonarProjectKey: bxbot
   NODE_PATH: src\bxbot\ClientApp\node_modules
+  LcovInfo: ./ClientApp/tscoverage/lcov.info
+  TsConfig: ./ClientApp/tsconfig.json
+  CsTarget: test bxbot-tests\bxbot-tests.csproj
+  CsFilter: +[bxbot*]* -[bxbot*]*Program -[bxbot*]*Startup +[tests*]*
+  CsCoverage: coverage.xml
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
