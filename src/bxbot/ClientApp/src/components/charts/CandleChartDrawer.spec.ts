@@ -1,4 +1,4 @@
-import { TestData } from '../../tests/TestUtils';
+import { TestData } from '../../../tests/TestUtils';
 import { CandleChartDrawer } from './CandleChartDrawer';
 import { ChartFactory } from './ChartFactory';
 
@@ -23,6 +23,11 @@ test('drawChart()', () => {
         candleChartDrawer.drawChart();
         expect(chartFactory.arrayToDataTable).toHaveBeenCalledTimes(data.executed[0]);
         expect(chartFactory.drawCandleChart).toHaveBeenCalledTimes(data.executed[1]);
-
     }
+});
+
+test('drawChart() with empty ChartFactory', () => {
+
+    const candleChartDrawer: CandleChartDrawer = new CandleChartDrawer([], 'test');
+    candleChartDrawer.drawChart();
 });

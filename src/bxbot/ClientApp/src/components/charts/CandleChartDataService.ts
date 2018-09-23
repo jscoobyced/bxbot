@@ -8,6 +8,10 @@ export class CandleChartDataService {
             return Promise.resolve([]);
         }
 
+        if(true) {
+            return this.fetchData('/api/Data/pairing/1/' + currency);
+        }
+
         return this.fetchData('/api/Data/pairing/1/' + currency);
     }
 
@@ -20,12 +24,8 @@ export class CandleChartDataService {
                 }
                 return response.json() as Promise<Pairing[]>;
             })
-            .then(response => response)
             .catch((error: Error) => {
-                if (url !== this.defaultUrl) {
-                    return this.fetchData(this.defaultUrl);
-                }
-                return [];
+                throw error;
             });
     }
 }
