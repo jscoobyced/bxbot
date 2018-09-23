@@ -42,7 +42,7 @@ test('Error fetchCurrencyData()', async () => {
 
 test('Not OK fetchCurrencyData()', async () => {
 
-    let errorMessage = 'Expect to fail';
+    const errorMessage = 'Expect to fail';
     window.fetch = TestUtils.mockFetchNotOk(errorMessage);
 
     const service = new CandleChartDataService();
