@@ -21,7 +21,11 @@ codecov -f $env:CsCoverage
 
 if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
+    Write-Host -------------------------------------- SQ Analysis start ---------------------
+
     dotnet "C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\SonarScanner.MSBuild.dll" end /d:sonar.login=$env:SonarKey
+
+    Write-Host -------------------------------------- SQ Analysis done- ---------------------
 }
 
 Set-Location $env:APPVEYOR_BUILD_FOLDER
