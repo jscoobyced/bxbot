@@ -27,4 +27,4 @@ comment:
 
 fixes:
   - "src\/src/::"
-  - "src\/bxbot\/ClientApp\/src/::"
+  - "src\/ClientApp\/src/::"
