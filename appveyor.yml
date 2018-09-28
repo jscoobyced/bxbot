@@ -4,7 +4,6 @@ configuration: Release
 platform: Any CPU
 skip_branch_with_pr: true
 skip_tags: true
-clone_depth: 1
 environment:
   SrcPath: src
   ClientApp: src\bxbot\ClientApp
@@ -23,7 +22,7 @@ environment:
   CsFilter: +[bxbot*]* -[bxbot*]*Program -[bxbot*]*Startup +[tests*]*
   CsCoverage: coverage.xml
   TsCoverage: .\coverage\coverage-final.json
-  TsReportPath: .\ClientApp\test-report.xml
+  TsReportPath: test-report.xml
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
