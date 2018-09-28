@@ -2,8 +2,8 @@ Write-Host -------------------------------------- Build start ------------------
 Write-Host -------------------------------------- ClientApp -----------------------------
 
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
-yarn --silent --no-progress install
-yarn --silent --no-progress webpack
+yarn install --silent --no-progress
+yarn webpack --silent --no-progress
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 
 Write-Host -------------------------------------- ClientApp done ------------------------
