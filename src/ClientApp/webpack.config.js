@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const GitRevisionWebpackPlugin = require('git-revision-webpack-plugin');
 
 const gitRevisionWebpackPlugin = new GitRevisionWebpackPlugin();
-const root = path.join(__dirname, '../wwwroot');
+const root = path.join(__dirname, '../bxbot/wwwroot');
 const dist = path.join(root, 'dist');
 
 module.exports = {

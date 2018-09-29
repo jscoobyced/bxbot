@@ -5,9 +5,6 @@ platform: Any CPU
 skip_branch_with_pr: true
 skip_tags: true
 environment:
-  SrcPath: src
-  ClientApp: src\bxbot\ClientApp
-  SonarExclusions: coverage\**\*,**\*.xml,**\*.spec.t*,**\*.js,**\tests\*,**\*.ico,**\Program.cs,**\Startup.cs,**\node_modules\*,**\wwwroot\dist\*
   SonarKey:
     secure: 12QqwTL16f53WwrFtClle28ZDS3BsHmEheUeMyT6r1BnReEnO70Vx7mzGHGLBuB9
   SonarGithubKey:
@@ -15,9 +12,13 @@ environment:
   SonarOrg: jscoobyced-github
   SonarUrl: https://sonarcloud.io
   SonarProjectKey: bxbot
-  NODE_PATH: src\bxbot\ClientApp\node_modules
-  LcovInfo: .\ClientApp\coverage\lcov.info
-  TsConfig: .\ClientApp\tsconfig.json
+  SrcPath: src
+  ClientApp: src\ClientApp
+  MsBuildScanner: C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools
+  SonarExclusions: coverage/**/*,**/*.xml,**/*.spec.t*,**/tests/*,**/Program.cs,**/Startup.cs,**/node_modules/**/*,**/wwwroot/dist/**/*
+  SonarScanner: sonar-scanner-3.2.0.1227\bin
+  LcovInfo: coverage\lcov.info
+  TsConfig: tsconfig.json
   CsTarget: test bxbot-tests\bxbot-tests.csproj
   CsFilter: +[bxbot*]* -[bxbot*]*Program -[bxbot*]*Startup +[tests*]*
   CsCoverage: coverage.xml
