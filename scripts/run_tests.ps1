@@ -11,7 +11,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     -D sonar.projectKey=$env:SonarProjectKey `
     -D sonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
     -D sonar.sources=. `
-    -D sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    -D sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp `
     -D sonar.organization=$env:SonarOrg `
     -D sonar.host.url=$env:SonarUrl `
     -D sonar.typescript.lcov.reportPaths=$env:LcovInfo `
@@ -31,7 +31,7 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     -D sonar.projectKey=$env:SonarProjectKey `
     -D sonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
     -D sonar.sources=. `
-    -D sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    -D sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp `
     -D sonar.organization=$env:SonarOrg `
     -D sonar.host.url=$env:SonarUrl `
     -D sonar.typescript.lcov.reportPaths=$env:LcovInfo `
