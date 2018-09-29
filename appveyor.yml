@@ -19,7 +19,7 @@ environment:
   SonarScanner: sonar-scanner-3.2.0.1227\bin
   LcovInfo: coverage\lcov.info
   TsConfig: tsconfig.json
-  CsTarget: test bxbot-tests\bxbot-tests.csproj
+  CsTarget: test --no-build bxbot-tests\bxbot-tests.csproj
   CsFilter: +[bxbot*]* -[bxbot*]*Program -[bxbot*]*Startup +[tests*]*
   CsCoverage: coverage.xml
   TsCoverage: .\coverage\coverage-final.json
