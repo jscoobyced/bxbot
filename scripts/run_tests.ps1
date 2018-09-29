@@ -5,11 +5,12 @@ Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn --silent run test:coverage
 codecov -f $env:TsCoverage
 
-dir $env:MsBuildScanner
+dir $env:MsBuildScanner\$env:SonarScanner
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
-    & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner" `
+    Write-Host Scanning for PR
+    & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner.bat" `
     -Dsonar.projectKey=$env:SonarProjectKey `
     -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
     -Dsonar.sources=. `
@@ -28,7 +29,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {
-    & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner"  `
+    & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner.bat"  `
     -Dsonar.projectKey=$env:SonarProjectKey `
     -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
     -Dsonar.sources=. `
