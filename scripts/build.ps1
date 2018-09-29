@@ -24,7 +24,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     -D sonar.analysis.mode=preview `
     -D sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
     -D sonar.github.repository=$env:APPVEYOR_REPO_NAME `
-    -D sonar.github.oauth=$env:SonarGithubKey -X
+    -D sonar.github.oauth=$env:SonarGithubKey
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {
