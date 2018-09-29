@@ -7,7 +7,7 @@ codecov -f $env:TsCoverage
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
-    "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner"  `
+    & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner" `
     -Dsonar.projectKey=$env:SonarProjectKey `
     -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
     -Dsonar.sources=. `
@@ -26,7 +26,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {
-    "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner"  `
+    & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner"  `
     -Dsonar.projectKey=$env:SonarProjectKey `
     -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
     -Dsonar.sources=. `
