@@ -16,6 +16,8 @@ environment:
   SonarUrl: https://sonarcloud.io
   SonarProjectKey: bxbot
   NODE_PATH: src\ClientApp\node_modules
+  MsBuildScanner: C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools
+  SonarScanner: sonar-scanner-3.2.0.1227-linux\bin\
   LcovInfo: .\ClientApp\coverage\lcov.info
   TsConfig: .\ClientApp\tsconfig.json
   CsTarget: test bxbot-tests\bxbot-tests.csproj

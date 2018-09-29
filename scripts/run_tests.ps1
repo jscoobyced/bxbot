@@ -4,6 +4,42 @@ Write-Host -------------------------------------- ClientApp --------------------
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn --silent run test:coverage
 codecov -f $env:TsCoverage
+
+if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
+{
+    "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner"  `
+    -Dsonar.projectKey=$env:SonarProjectKey `
+    -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
+    -Dsonar.sources=. `
+    -Dsonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    -Dsonar.organization=$env:SonarOrg `
+    -Dsonar.host.url=$env:SonarUrl `
+    -Dsonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    -Dsonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
+    -Dsonar.typescript.tsconfigPath=$env:TsConfig `
+    -Dsonar.login=$env:SonarKey `
+    -Dsonar.exclusions="$env:SonarExclusions" `
+    -Dsonar.analysis.mode=preview `
+    -Dsonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
+    -Dsonar.github.repository=$env:APPVEYOR_REPO_NAME `
+    -Dsonar.github.oauth=$env:SonarGithubKey
+}
+elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
+{
+    "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner"  `
+    -Dsonar.projectKey=$env:SonarProjectKey `
+    -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
+    -Dsonar.sources=. `
+    -Dsonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    -Dsonar.organization=$env:SonarOrg `
+    -Dsonar.host.url=$env:SonarUrl `
+    -Dsonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    -Dsonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
+    -Dsonar.typescript.tsconfigPath=$env:TsConfig `
+    -Dsonar.login=$env:SonarKey `
+    -Dsonar.exclusions="$env:SonarExclusions"
+}
+
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
 
 Write-Host -------------------------------------- ClientApp done ------------------------

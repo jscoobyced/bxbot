@@ -13,7 +13,7 @@ dotnet restore
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
-    dotnet "C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\SonarScanner.MSBuild.dll" begin `
+    dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
     /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
@@ -32,7 +32,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {
-    dotnet "C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\SonarScanner.MSBuild.dll" begin `
+    dotnet "$env:MsBuildScanner\SonarScanner.MSBuild.dll" begin `
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
     /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
