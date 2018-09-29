@@ -19,7 +19,6 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     -D sonar.typescript.tsconfigPath=$env:TsConfig `
     -D sonar.login=$env:SonarKey `
     -D sonar.exclusions="$env:SonarExclusions" `
-    -D sonar.exclusions="$env:SonarExclusions" `
     -D sonar.analysis.mode=preview `
     -D sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
     -D sonar.github.repository=$env:APPVEYOR_REPO_NAME `
