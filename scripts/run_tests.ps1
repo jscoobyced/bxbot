@@ -25,6 +25,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
     /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    /d:sonar.modules=bxbot,bxbot-tests,ClientApp `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `
@@ -44,6 +45,7 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /k:$env:SonarProjectKey `
     /v:$env:APPVEYOR_BUILD_VERSION `
     /d:sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    /d:sonar.modules=bxbot,bxbot-tests,ClientApp `
     /d:sonar.organization=$env:SonarOrg `
     /d:sonar.host.url=$env:SonarUrl `
     /d:sonar.cs.opencover.reportsPaths=$env:CsCoverage `
