@@ -5,6 +5,8 @@ Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn --silent run test:coverage
 codecov -f $env:TsCoverage
 
+dir $env:MsBuildScanner
+
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
     & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner" `
