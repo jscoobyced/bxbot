@@ -1,6 +1,6 @@
 {
   "name": "bxbot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Application that help tracing current currency values using https://bx.co.th ticker data.",
   "main": "index.js",
   "repository": "https://github.com/jscoobyced/bxbot",
