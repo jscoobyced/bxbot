@@ -5,9 +5,6 @@ Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:ClientApp
 yarn install --silent --no-progress
 yarn webpack --silent --no-progress
 yarn --silent run test:coverage
-codecov -f $env:TsCoverage
-
-dir $env:MsBuildScanner\$env:SonarScanner
 
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
@@ -27,7 +24,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     -D sonar.analysis.mode=preview `
     -D sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
     -D sonar.github.repository=$env:APPVEYOR_REPO_NAME `
-    -D sonar.github.oauth=$env:SonarGithubKey
+    -D sonar.github.oauth=$env:SonarGithubKey -X
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {
