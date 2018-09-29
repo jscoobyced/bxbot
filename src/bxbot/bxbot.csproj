@@ -31,13 +31,13 @@
     <!-- In development, the dist files won't exist on the first run or when cloning to
          a different machine, so rebuild them if not already present. -->
     <Message Importance="high" Text="Performing first-run Webpack build..." />
-    <Exec Command="yarn --cwd ./ClientApp webpack" />
+    <Exec Command="yarn --cwd ../ClientApp webpack" />
   </Target>
 
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
-    <Exec Command="yarn --cwd ./ClientApp install" />
-    <Exec Command="yarn --cwd ./ClientApp webpack" />
+    <Exec Command="yarn --cwd ../ClientApp install" />
+    <Exec Command="yarn --cwd ../ClientApp webpack" />
 
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
