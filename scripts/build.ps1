@@ -6,6 +6,7 @@ yarn install --silent --no-progress
 yarn webpack --silent --no-progress
 yarn --silent run test:coverage
 
+cat C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\sonar-scanner-3.2.0.1227\conf\sonar-scanner.properties
 if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
     Write-Host Scanning for PR
@@ -20,6 +21,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     -D sonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
     -D sonar.typescript.tsconfigPath=$env:TsConfig `
     -D sonar.login=$env:SonarKey `
+    -D sonar.exclusions="$env:SonarExclusions" `
     -D sonar.exclusions="$env:SonarExclusions" `
     -D sonar.analysis.mode=preview `
     -D sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
