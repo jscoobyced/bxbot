@@ -11,36 +11,36 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
 {
     Write-Host Scanning for PR
     & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner.bat" `
-    -Dsonar.projectKey=$env:SonarProjectKey `
-    -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
-    -Dsonar.sources=. `
-    -Dsonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
-    -Dsonar.organization=$env:SonarOrg `
-    -Dsonar.host.url=$env:SonarUrl `
-    -Dsonar.typescript.lcov.reportPaths=$env:LcovInfo `
-    -Dsonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
-    -Dsonar.typescript.tsconfigPath=$env:TsConfig `
-    -Dsonar.login=$env:SonarKey `
-    -Dsonar.exclusions="$env:SonarExclusions" `
-    -Dsonar.analysis.mode=preview `
-    -Dsonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
-    -Dsonar.github.repository=$env:APPVEYOR_REPO_NAME `
-    -Dsonar.github.oauth=$env:SonarGithubKey
+    -D sonar.projectKey=$env:SonarProjectKey `
+    -D sonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
+    -D sonar.sources=. `
+    -D sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    -D sonar.organization=$env:SonarOrg `
+    -D sonar.host.url=$env:SonarUrl `
+    -D sonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    -D sonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
+    -D sonar.typescript.tsconfigPath=$env:TsConfig `
+    -D sonar.login=$env:SonarKey `
+    -D sonar.exclusions="$env:SonarExclusions" `
+    -D sonar.analysis.mode=preview `
+    -D sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
+    -D sonar.github.repository=$env:APPVEYOR_REPO_NAME `
+    -D sonar.github.oauth=$env:SonarGithubKey
 }
 elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
 {
     & "$env:MsBuildScanner\$env:SonarScanner\sonar-scanner.bat"  `
-    -Dsonar.projectKey=$env:SonarProjectKey `
-    -Dsonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
-    -Dsonar.sources=. `
-    -Dsonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
-    -Dsonar.organization=$env:SonarOrg `
-    -Dsonar.host.url=$env:SonarUrl `
-    -Dsonar.typescript.lcov.reportPaths=$env:LcovInfo `
-    -Dsonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
-    -Dsonar.typescript.tsconfigPath=$env:TsConfig `
-    -Dsonar.login=$env:SonarKey `
-    -Dsonar.exclusions="$env:SonarExclusions"
+    -D sonar.projectKey=$env:SonarProjectKey `
+    -D sonar.projectVersion=$env:APPVEYOR_BUILD_VERSION `
+    -D sonar.sources=. `
+    -D sonar.projectBaseDir=$env:APPVEYOR_BUILD_FOLDER/$env:SrcPath `
+    -D sonar.organization=$env:SonarOrg `
+    -D sonar.host.url=$env:SonarUrl `
+    -D sonar.typescript.lcov.reportPaths=$env:LcovInfo `
+    -D sonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
+    -D sonar.typescript.tsconfigPath=$env:TsConfig `
+    -D sonar.login=$env:SonarKey `
+    -D sonar.exclusions="$env:SonarExclusions"
 }
 
 Set-Location $env:APPVEYOR_BUILD_FOLDER/$env:SrcPath
