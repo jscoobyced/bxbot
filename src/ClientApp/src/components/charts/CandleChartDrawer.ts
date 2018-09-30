@@ -1,9 +1,9 @@
 import { ChartFactory } from './ChartFactory';
 
 export class CandleChartDrawer {
-    private chartData: any[];
-    private chartElement: string;
-    private chartFactory: ChartFactory;
+    private readonly chartData: any[];
+    private readonly chartElement: string;
+    private readonly chartFactory: ChartFactory;
 
     public constructor(chartData: any[], chartElement: string, chartFactory?: ChartFactory) {
         this.chartData = chartData;
@@ -12,11 +12,14 @@ export class CandleChartDrawer {
     }
 
     public drawChart() {
-        if (this.chartData === undefined || this.chartData.length === 0)
+        if (this.chartData === undefined || this.chartData.length === 0) {
             return;
+        }
+
         const data = this.chartFactory.arrayToDataTable(this.chartData);
-        if (data === undefined)
+        if (data === undefined) {
             return;
+        }
 
         const options = {
             candlestick: {

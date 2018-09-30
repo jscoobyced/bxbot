@@ -7,10 +7,10 @@ import { GoogleChartInitializer } from './GoogleChartInitializer';
 import { CandleChartPageState } from './Models';
 
 export class CandleChartPage extends React.Component<any, CandleChartPageState> {
-    private static ChartElement: string = "candle_div";
+    private static readonly ChartElement = "candle_div";
     private candleChart: CandleChartDrawer = new CandleChartDrawer([], "");
-    private bollingerSize: number = 20;
-    private dataFormatter: DataFormatter = new DataFormatter();
+    private readonly bollingerSize = 20;
+    private readonly dataFormatter: DataFormatter = new DataFormatter();
     private chartData: any;
 
     constructor(props: any, state: CandleChartPageState) {
