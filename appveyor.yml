@@ -16,7 +16,7 @@ environment:
   ClientApp: src\ClientApp
   MsBuildScanner: C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools
   SonarExclusions: coverage/**/*,**/*.xml,**/*.spec.t*,**/Program.cs,**/Startup.cs,**/node_modules/**/*,**/wwwroot/dist/**/*
-  SonarExclusions: "**/*.js,**/tests/*"
+  SonarCoverageExclusions: "**/*.js,**/tests/*"
   SonarScanner: sonar-scanner-3.2.0.1227\bin
   LcovInfo: coverage\lcov.info
   TsConfig: tsconfig.json
