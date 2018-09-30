@@ -35,6 +35,7 @@ if ( $env:APPVEYOR_PULL_REQUEST_NUMBER )
     /d:sonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
     /d:sonar.typescript.tsconfigPath=$env:TsConfig `
     /d:sonar.exclusions="$env:SonarExclusions" `
+    /d:sonar.coverage.exclusions="$env:SonarCoverageExclusions" `
     /d:sonar.analysis.mode=preview `
     /d:sonar.github.pullRequest=$env:APPVEYOR_PULL_REQUEST_NUMBER `
     /d:sonar.github.repository=$env:APPVEYOR_REPO_NAME `
@@ -53,7 +54,8 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /d:sonar.typescript.lcov.reportPaths=$env:LcovInfo `
     /d:sonar.testExecutionReportPaths=$env:APPVEYOR_BUILD_FOLDER/$env:ClientApp/$env:TsReportPath `
     /d:sonar.typescript.tsconfigPath=$env:TsConfig `
-    /d:sonar.exclusions="$env:SonarExclusions"
+    /d:sonar.exclusions="$env:SonarExclusions" `
+    /d:sonar.coverage.exclusions="$env:SonarCoverageExclusions"
 }
 
 dotnet build
