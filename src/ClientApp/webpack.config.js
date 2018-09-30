@@ -14,11 +14,6 @@ const dist = path.join(root, 'dist');
 
 module.exports = {
   mode: "development",
-  optimization: {
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: false,
-  },
   entry: {
     'vendor': ['react', 'react-dom', 'react-router-dom'],
     'main': './src/index.tsx'
@@ -30,6 +25,8 @@ module.exports = {
     filename: '[name].[chunkhash].js'
   },
   optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
     splitChunks: {
       cacheGroups: {
         vendor: {
