@@ -1,5 +1,3 @@
-import { } from 'google.visualization';
-
 export class ChartFactory {
     public arrayToDataTable(data: number[]): google.visualization.DataTable {
         return google.visualization.arrayToDataTable(data, true);

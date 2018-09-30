@@ -1,5 +1,3 @@
-import { } from 'google.visualization';
-
 export class GoogleChartInitializer {
 
     public static IsReady(): boolean {

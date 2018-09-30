@@ -15,7 +15,7 @@ export class BollingerBand {
    * @param size The number of days to use for the computation
    * @param times The number of standard deviations to take from the moving average
    */
-  public bb(data: number[], size: number = 20, times: number = 2): BollingerBandData {
+  public bb(data: number[], size = 20, times = 2): BollingerBandData {
 
     const movingAverage = new MovingAverage().ma(data, size);
     const standardDeviation = new StandardDeviation().sd(data, size);

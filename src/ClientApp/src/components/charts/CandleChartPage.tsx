@@ -41,7 +41,7 @@ export class CandleChartPage extends React.Component<any, CandleChartPageState> 
         />;
     }
 
-    private drawChart = () => {
+    private readonly drawChart = () => {
         this.candleChart = new CandleChartDrawer(this.chartData, CandleChartPage.ChartElement);
         this.setState({ loading: false });
     }
