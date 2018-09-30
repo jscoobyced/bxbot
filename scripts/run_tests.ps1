@@ -56,6 +56,13 @@ elseif ( $env:APPVEYOR_REPO_BRANCH -Eq "master" )
     /d:sonar.exclusions="$env:SonarExclusions"
 }
 
+dotnet build
+
+if ( ( $env:APPVEYOR_REPO_BRANCH -Eq "master" ) -Or $env:APPVEYOR_PULL_REQUEST_NUMBER )
+{
+    dotnet "C:\ProgramData\chocolatey\lib\sonarscanner-msbuild-netcoreapp2.0\tools\SonarScanner.MSBuild.dll" end /d:sonar.login=$env:SonarKey
+}
+
 Write-Host -------------------------------------- SQ Analysis done- ---------------------
 
 Set-Location $env:APPVEYOR_BUILD_FOLDER
