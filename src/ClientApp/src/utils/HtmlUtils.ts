@@ -11,10 +11,11 @@ export class HtmlUtils {
         }
 
         const baseUrl = bases[0].getAttribute('href');
-        if (baseUrl === null || typeof baseUrl === undefined) {
-            return baseUrl + "";
+
+        if (!baseUrl) {
+            return "";
         }
 
-        return "";
+        return baseUrl;
     }
 }
