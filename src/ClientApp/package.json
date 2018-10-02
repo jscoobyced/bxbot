@@ -8,8 +8,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "build": "webpack --mode production",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "dev-server": "webpack-dev-server --mode development"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",

@@ -1,26 +1,27 @@
 import * as React from 'react';
 import { CandleChart } from './CandleChart';
-import { CandleChartDataService } from './CandleChartDataService';
+import { ICandleChartDataService } from './CandleChartDataService';
 import { CandleChartDrawer } from './CandleChartDrawer';
 import { DataFormatter } from './DataFormatter';
 import { GoogleChartInitializer } from './GoogleChartInitializer';
-import { CandleChartPageState } from './Models';
+import { CandleChartPageState, CandleChartPageProps } from './Models';
 
-export class CandleChartPage extends React.Component<any, CandleChartPageState> {
+export class CandleChartPage extends React.Component<CandleChartPageProps, CandleChartPageState> {
     private static readonly ChartElement = "candle_div";
     private candleChart: CandleChartDrawer = new CandleChartDrawer([], "");
     private readonly bollingerSize = 20;
     private readonly dataFormatter: DataFormatter = new DataFormatter();
     private chartData: any;
+    private readonly service: ICandleChartDataService;
 
-    constructor(props: any, state: CandleChartPageState) {
+    constructor(props: CandleChartPageProps, state: CandleChartPageState) {
         super(props, state);
+        this.service = props.candleChartDataService;
         this.state = { pairings: [], loading: true };
     }
 
     public componentDidMount() {
-        const service = new CandleChartDataService();
-        service.fetchCurrencyData(5)
+        this.service.fetchCurrencyData(5)
             .then(data => {
                 this.chartData = this.dataFormatter.formatBollingerData(data, this.bollingerSize);
                 if (!GoogleChartInitializer.IsReady()) {
