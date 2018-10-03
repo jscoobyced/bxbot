@@ -8,13 +8,8 @@ export interface Pairing {
     open: number;
 }
 
-export interface CandleChartPageProps {
-    candleChartDataService: ICandleChartDataService;
-}
-
-export interface CandleChartPageState {
+export interface CandleChartPageData {
     pairings: Pairing[];
-    loading: boolean;
 }
 
 export interface CandleChartProps {
