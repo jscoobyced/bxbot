@@ -15,7 +15,7 @@ export interface CandleChartPageData {
 }
 
 export interface CandleChartPageProps {
-    currency: number;
+    currencyId: number;
 }
 
 export interface CandleChartProps {

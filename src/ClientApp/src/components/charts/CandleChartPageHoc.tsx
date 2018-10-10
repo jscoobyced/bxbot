@@ -4,9 +4,10 @@ import { CandleChartDataServiceMock } from './CandleChartDataServiceMock';
 import { CandleChartPage } from './CandleChartPage';
 import { CandleChartPageData, CandleChartPageProps } from './Models';
 
-export class CandleChartPageHoc extends React.Component<CandleChartPageProps, CandleChartPageData> {
+export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData> {
 
     private readonly service: ICandleChartDataService;
+    private readonly defaultCurrencyId = 1;
 
     constructor(props: any, state: any) {
         super(props, state);
@@ -15,14 +16,14 @@ export class CandleChartPageHoc extends React.Component<CandleChartPageProps, Ca
         this.state = { pairings: [], loading: false, currency: '' };
     }
 
-    public fetchCurrencyData = () => {
+    public fetchCurrencyData = (currencyId: number) => {
         if (this.state.loading) {
             return;
         }
         this.setState({
             loading: true
         });
-        this.service.fetchCurrencyData(5)
+        this.service.fetchCurrencyData(currencyId)
             .then(data => {
                 this.setState({
                     pairings: data,
@@ -33,13 +34,31 @@ export class CandleChartPageHoc extends React.Component<CandleChartPageProps, Ca
     }
 
     public componentDidMount = () => {
-        this.fetchCurrencyData();
+        this.fetchCurrencyData(this.defaultCurrencyId);
     }
 
     public render() {
-        return <CandleChartPage
-            pairings={this.state.pairings}
-            loading={this.state.loading}
-            currency={this.state.currency} />;
+        return <div>
+            <select onChange={this.onChangeCurrency}>
+                <option value='1'>THB/BTC</option>
+                <option value='25'>THB/XRP</option>
+                <option value='27'>THB/BCH</option>
+                <option value='29'>THB/XZC</option>
+            </select>
+            <CandleChartPage
+                pairings={this.state.pairings}
+                loading={this.state.loading}
+                currency={this.state.currency} />
+        </div>;
     }
+
+    private onChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        event.preventDefault();
+        let currencyId = this.defaultCurrencyId;
+        if (event.target.value) {
+            currencyId = parseInt(event.target.value, 10);
+        }
+        this.fetchCurrencyData(currencyId);
+    }
+
 }

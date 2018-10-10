@@ -5,7 +5,14 @@ export class GoogleChartInitializer {
         return (window as any).JSGoogleChart as boolean;
     }
 
+    private static loading = false;
+
     public Init(render: () => void): boolean {
+        if (GoogleChartInitializer.loading) {
+            return false;
+        }
+
+        GoogleChartInitializer.loading = true;
         (window as any).JSGoogleChart = false;
         (window as any).JSGoogleChartFunction = render;
         const body = document.getElementsByTagName('body')[0];

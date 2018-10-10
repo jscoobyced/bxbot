@@ -1,9 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
-<CandleChartPage
-  currency=""
-  loading={true}
-  pairings={Array []}
-/>
+<div>
+  <select
+    onChange={[Function]}
+  >
+    <option
+      value="1"
+    >
+      THB/BTC
+    </option>
+    <option
+      value="25"
+    >
+      THB/XRP
+    </option>
+    <option
+      value="27"
+    >
+      THB/BCH
+    </option>
+    <option
+      value="29"
+    >
+      THB/XZC
+    </option>
+  </select>
+  <CandleChartPage
+    currency=""
+    loading={true}
+    pairings={Array []}
+  />
+</div>
 `;
