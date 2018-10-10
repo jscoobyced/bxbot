@@ -10,6 +10,12 @@ export interface Pairing {
 
 export interface CandleChartPageData {
     pairings: Pairing[];
+    loading: boolean;
+    currency: string;
+}
+
+export interface CandleChartPageProps {
+    currency: number;
 }
 
 export interface CandleChartProps {

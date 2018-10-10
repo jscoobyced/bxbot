@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
+<CandleChartPage
+  currency=""
+  loading={true}
+  pairings={Array []}
+/>
+`;

@@ -16,15 +16,7 @@ export class CandleChartPage extends React.Component<CandleChartPageData> {
         super(props);
     }
 
-    public render(): JSX.Element {
-        this.update();
-        return <CandleChart
-            element={CandleChartPage.ChartElement}
-            currency='BTC'
-        />;
-    }
-
-    private update() {
+    public componentDidUpdate() {
         const { pairings } = this.props;
         if (pairings !== []) {
             this.chartData = this.dataFormatter.formatBollingerData(pairings, this.bollingerSize);
@@ -34,7 +26,13 @@ export class CandleChartPage extends React.Component<CandleChartPageData> {
                 this.drawChart();
             }
         }
+    }
 
+    public render(): JSX.Element {
+        return <CandleChart
+            element={CandleChartPage.ChartElement}
+            currency={this.props.currency}
+        />;
     }
 
     private readonly drawChart = () => {

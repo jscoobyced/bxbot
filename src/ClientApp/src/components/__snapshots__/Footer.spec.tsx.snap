@@ -2,6 +2,6 @@
 
 exports[`Footer component is unchanged. 1`] = `
 <footer>
-  $
+   - 
 </footer>
 `;

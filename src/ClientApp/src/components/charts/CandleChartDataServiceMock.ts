@@ -1,5 +1,5 @@
-import { Pairing } from './Models';
 import { ICandleChartDataService } from './CandleChartDataService';
+import { Pairing } from './Models';
 
 export class CandleChartDataServiceMock implements ICandleChartDataService {
 
