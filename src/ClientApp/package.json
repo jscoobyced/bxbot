@@ -10,7 +10,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "test": "jest",
-    "test:coverage": "jest --coverage --coverageReporters=text",
+    "test:coverage": "jest --coverage",
     "dev-server": "webpack-dev-server --mode development"
   },
   "devDependencies": {
