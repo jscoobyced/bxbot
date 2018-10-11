@@ -60,5 +60,4 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
         }
         this.fetchCurrencyData(currencyId);
     }
-
 }

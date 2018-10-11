@@ -7,7 +7,7 @@ export class CandleChartDataService implements ICandleChartDataService {
             return Promise.resolve([]);
         }
 
-        return this.fetchData('/api/Data/pairing/' + currency + '/5');
+        return this.fetchData(`/api/Data/pairing/${currency}/5`);
     }
 
     private fetchData(url: string): Promise<Pairing[]> {
