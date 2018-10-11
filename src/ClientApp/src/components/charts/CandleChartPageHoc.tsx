@@ -52,7 +52,7 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
         </div>;
     }
 
-    private onChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    private readonly onChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         event.preventDefault();
         let currencyId = this.defaultCurrencyId;
         if (event.target.value) {
