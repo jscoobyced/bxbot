@@ -3,6 +3,7 @@
 exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
 <div>
   <select
+    id="currencySelector"
     onChange={[Function]}
   >
     <option
@@ -26,7 +27,7 @@ exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
       THB/XZC
     </option>
   </select>
-  <CandleChartPage
+  <CandleChartComponent
     currency=""
     loading={true}
     pairings={Array []}

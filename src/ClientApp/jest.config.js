@@ -21,5 +21,8 @@ module.exports = {
     "json"
   ],
   coverageDirectory: "coverage",
-  testResultsProcessor: "jest-sonar-reporter"
+  testResultsProcessor: "jest-sonar-reporter",
+  setupFiles: [
+    "./tests/dom.js"
+  ]
 }

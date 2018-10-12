@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CandleChartDataService, ICandleChartDataService } from './CandleChartDataService';
 import { CandleChartDataServiceMock } from './CandleChartDataServiceMock';
-import { CandleChartPage } from './CandleChartPage';
+import { CandleChartComponent } from './CandleChartComponent';
 import { CandleChartPageData, CandleChartPageProps } from './Models';
 
 export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData> {
@@ -16,7 +16,7 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
         this.state = { pairings: [], loading: false, currency: '' };
     }
 
-    public fetchCurrencyData = (currencyId: number) => {
+    public readonly fetchCurrencyData = (currencyId: number) => {
         if (this.state.loading) {
             return;
         }
@@ -39,13 +39,13 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
 
     public render() {
         return <div>
-            <select onChange={this.onChangeCurrency}>
+            <select id='currencySelector' onChange={this.onChangeCurrency}>
                 <option value='1'>THB/BTC</option>
                 <option value='25'>THB/XRP</option>
                 <option value='27'>THB/BCH</option>
                 <option value='29'>THB/XZC</option>
             </select>
-            <CandleChartPage
+            <CandleChartComponent
                 pairings={this.state.pairings}
                 loading={this.state.loading}
                 currency={this.state.currency} />
