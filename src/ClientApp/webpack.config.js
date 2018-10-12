@@ -12,7 +12,7 @@ const gitRevisionWebpackPlugin = new GitRevisionWebpackPlugin();
 const root = path.join(__dirname, '../bxbot/wwwroot');
 const dist = path.join(root, 'dist');
 
-module.exports = {
+module.exports = (env, argv) => ({
   mode: "development",
   entry: {
     'vendor': ['react', 'react-dom', 'react-router-dom'],
@@ -64,7 +64,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'VERSION': JSON.stringify(gitRevisionWebpackPlugin.version())
+        'VERSION': JSON.stringify(gitRevisionWebpackPlugin.version()),
+        'mode': JSON.stringify(argv.mode)
       }
     }),
     new TSLintPlugin({
@@ -98,4 +99,4 @@ module.exports = {
     compress: true,
     port: 9000
   }
-};
+});

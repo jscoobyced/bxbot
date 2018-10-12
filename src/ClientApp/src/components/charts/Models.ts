@@ -1,3 +1,5 @@
+import { ICandleChartDataService } from "./CandleChartDataService";
+
 export interface Pairing {
     timestamp: number;
     low: number;
@@ -6,9 +8,14 @@ export interface Pairing {
     open: number;
 }
 
-export interface CandleChartPageState {
+export interface CandleChartPageData {
     pairings: Pairing[];
     loading: boolean;
+    currency: string;
+}
+
+export interface CandleChartPageProps {
+    currencyId: number;
 }
 
 export interface CandleChartProps {

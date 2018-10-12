@@ -1,13 +1,14 @@
+import { ICandleChartDataService } from './CandleChartDataService';
 import { Pairing } from './Models';
 
-export class CandleChartDataService implements ICandleChartDataService {
+export class CandleChartDataServiceMock implements ICandleChartDataService {
 
     public fetchCurrencyData(currency: number): Promise<Pairing[]> {
         if (currency === undefined) {
             return Promise.resolve([]);
         }
 
-        return this.fetchData(`/api/Data/pairing/${currency}/5`);
+        return this.fetchData('/data.json');
     }
 
     private fetchData(url: string): Promise<Pairing[]> {
@@ -23,8 +24,4 @@ export class CandleChartDataService implements ICandleChartDataService {
                 throw error;
             });
     }
-}
-
-export interface ICandleChartDataService {
-    fetchCurrencyData(currency: number): Promise<Pairing[]>;
 }

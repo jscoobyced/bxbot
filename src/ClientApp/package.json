@@ -8,8 +8,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "build": "webpack --mode production",
     "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "dev-server": "webpack-dev-server --mode development"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
@@ -29,7 +31,7 @@
     "enzyme-adapter-react-16": "1.5.0",
     "enzyme-to-json": "3.3.4",
     "file-loader": "2.0.0",
-    "git-revision-webpack-plugin": "^3.0.3",
+    "git-revision-webpack-plugin": "3.0.3",
     "html-webpack-plugin": "3.2.0",
     "jest": "23.6.0",
     "jest-sonar-reporter": "2.0.0",
