@@ -8,7 +8,6 @@ test('CandleChartDataServiceMock is valid', async () => {
 
     const candleChartDataServiceMock = new CandleChartDataServiceMock();
     const result = await candleChartDataServiceMock.fetchCurrencyData(1);
-    console.log(result);
     expect(result).toEqual(expected);
 
 });
