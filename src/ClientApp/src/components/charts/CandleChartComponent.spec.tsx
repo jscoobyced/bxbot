@@ -11,6 +11,6 @@ test('CandleChartComponent isn\'t changed when empty', () => {
 test('CandleChartComponent isn\'t changed when not empty', () => {
     const pairings: Pairing[] = [{ close: 0, high: 0, low: 0, open: 0, timestamp: 0 }];
     const candleChartComponent = shallow(<CandleChartComponent pairings={[]} currency={'BTC'} loading={false} />);
-    candleChartComponent.setProps({ pairings: pairings });
+    candleChartComponent.setProps({ pairings });
     expect(candleChartComponent).toMatchSnapshot();
 });

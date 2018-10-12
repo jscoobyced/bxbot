@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { CandleChartComponent } from './CandleChartComponent';
 import { CandleChartDataService, ICandleChartDataService } from './CandleChartDataService';
 import { CandleChartDataServiceMock } from './CandleChartDataServiceMock';
-import { CandleChartComponent } from './CandleChartComponent';
 import { CandleChartPageData, CandleChartPageProps } from './Models';
 
 export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData> {

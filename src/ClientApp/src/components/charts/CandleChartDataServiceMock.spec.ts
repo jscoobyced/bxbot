@@ -1,6 +1,5 @@
-import { CandleChartDataServiceMock } from './CandleChartDataServiceMock';
 import { TestUtils } from '../../../tests/TestUtils';
-import { Pairing } from './Models';
+import { CandleChartDataServiceMock } from './CandleChartDataServiceMock';
 
 test('CandleChartDataServiceMock is valid', async () => {
 
