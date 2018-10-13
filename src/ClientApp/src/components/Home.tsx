@@ -2,8 +2,8 @@ import * as React from 'react';
 
 export class Home extends React.Component {
     public render() {
-        return <div>
+        return <article>
             <h1>Hello, world!</h1>
-        </div>;
+        </article>;
     }
 }

@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import * as RoutesModule from './routes';
+import { ContentService } from './services/ContentService';
 import './styles/main.scss';
 import { HtmlUtils } from './utils/HtmlUtils';
 
@@ -18,4 +19,5 @@ export class Index {
 
 }
 
+ContentService.init();
 new Index().renderApp();
