@@ -15,15 +15,19 @@ Application that help tracing current currency values using [bx.co.th](http://bx
 In a CMD or TERMINAL window, follow those steps:
 - To prepare the client-side assets:
 ```
-cd bxbot
+pushd src/ClientApp
 yarn install
+yarn webpack
+popd
 ```
 
 - To build the dotnet core application
 ```
+pushd src
 dotnet restore
 dotnet build
-dotnet run
+dotnet run --project bxbot
+popd
 ```
 
 Then you can open your browser on http://localhost:5000 to browse the application.
@@ -32,8 +36,7 @@ Then you can open your browser on http://localhost:5000 to browse the applicatio
 
 - To run the unit tests
 ```
-cd ../bxbot-tests
-dotnet restore
-dotnet build
+cd src/bxbot-tests
 dotnet test
+popd
 ```
