@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component is unchanged. 1`] = `
+<header>
+  <img
+    alt="undefined logo"
+    className="logo"
+    src="/images/wings.svg"
+  />
+  <span />
+  <nav>
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      to="/"
+    >
+      Home
+    </NavLink>
+    <a
+      className="menu-space"
+      href="#"
+    >
+       
+    </a>
+    <a
+      className="dropdown"
+      href="#"
+    >
+      Cryptocurrency
+    </a>
+    <div
+      className="dropdown-content"
+    >
+      <NavLink
+        activeClassName="active"
+        aria-current="page"
+        to="/candle"
+      >
+        CandleChart
+      </NavLink>
+    </div>
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      to="/"
+    >
+      About
+    </NavLink>
+  </nav>
+</header>
+`;

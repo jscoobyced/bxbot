@@ -9,6 +9,8 @@ $primary-dark: #0D47A1;
 $background: #FFF;
 $background-invert: darken($background, 50%);
 
+$navigation-span: 160px;
+
 * {
     margin: 0 0;
 }
@@ -26,6 +28,7 @@ body {
     border: 0;
     padding: 5px;
     vertical-align: middle;
+    margin-left: -$navigation-span;
 }
 
 header {
@@ -34,7 +37,7 @@ header {
 }
 
 header span {
-    padding: 5px
+    padding: 5px $navigation-span 5px 5px;
 }
 
 footer {
@@ -104,9 +107,14 @@ nav a:hover, .dropdown:hover .dropbtn {
 
 main {
     width: 100%;
+    padding-top: 50px;
 }
 
 article {
     width: 80%;
     margin: 0 auto;
+}
+
+article h1 {
+    padding-bottom: 10px;
 }
