@@ -9,7 +9,7 @@ exports[`Page content is preserved 1`] = `
       Object {
         "homeContent": Object {
           "article": "Grand opening of sawan.io.",
-          "articleTitle": "Latest news - 2018-10-11",
+          "articleTitle": "Latest news - 2018-10-14",
         },
         "navigationMenuContent": Object {
           "about": "About",

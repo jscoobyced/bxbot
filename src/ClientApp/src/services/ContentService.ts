@@ -12,7 +12,7 @@ export class ContentService {
         this.content[language][ContentKey.About] = 'About';
         this.content[language][ContentKey.CryptoCurrency] = 'Cryptocurrency';
         this.content[language][ContentKey.CandleChart] = 'Candle Chart';
-        const date = new Date().getTime() - 3 * 86400000;
+        const date = '2018-10-14';
         const displayDate = (new Date(date).toISOString().substring(0, 10));
         this.content[language][ContentKey.MainArticleTitle] = `Latest news - ${displayDate}`;
         this.content[language][ContentKey.MainArticle] = 'Grand opening of sawan.io.';

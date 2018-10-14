@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import { Home } from './Home';
 import { ContentService } from '../../services/ContentService';
+import { Home } from './Home';
 
 test('Home component is unchanged.', () => {
     const homeContent = new ContentService().defaultContent().homeContent;
