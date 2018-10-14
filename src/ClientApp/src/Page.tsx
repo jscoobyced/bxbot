@@ -13,7 +13,7 @@ export interface PageState {
 
 export class Page extends React.Component<{}, PageState> {
 
-    private contentService: ContentService;
+    private readonly contentService: ContentService;
 
     public constructor(props: any) {
         super(props);

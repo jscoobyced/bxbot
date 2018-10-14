@@ -3,7 +3,7 @@ import { AllContent, Language } from './Models';
 
 export class ContentService {
 
-    private content: Array<{ [key: string]: string; }> = [];
+    private readonly content: Array<{ [key: string]: string; }> = [];
 
     public updateContent(language: Language): AllContent {
         this.content[language] = {};
