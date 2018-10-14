@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
-<div>
+<article>
   <select
     id="currencySelector"
     onChange={[Function]}
@@ -32,5 +32,5 @@ exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
     loading={true}
     pairings={Array []}
   />
-</div>
+</article>
 `;

@@ -3,9 +3,10 @@
 exports[`Header component is unchanged. 1`] = `
 <header>
   <img
-    alt="undefined logo"
+    alt=" logo"
     className="logo"
     src="/images/wings.svg"
+    title=""
   />
   <span />
   <nav>
@@ -13,9 +14,7 @@ exports[`Header component is unchanged. 1`] = `
       activeClassName="active"
       aria-current="page"
       to="/"
-    >
-      Home
-    </NavLink>
+    />
     <a
       className="menu-space"
       href="#"
@@ -25,9 +24,7 @@ exports[`Header component is unchanged. 1`] = `
     <a
       className="dropdown"
       href="#"
-    >
-      Cryptocurrency
-    </a>
+    />
     <div
       className="dropdown-content"
     >
@@ -35,17 +32,13 @@ exports[`Header component is unchanged. 1`] = `
         activeClassName="active"
         aria-current="page"
         to="/candle"
-      >
-        CandleChart
-      </NavLink>
+      />
     </div>
     <NavLink
       activeClassName="active"
       aria-current="page"
       to="/"
-    >
-      About
-    </NavLink>
+    />
   </nav>
 </header>
 `;
