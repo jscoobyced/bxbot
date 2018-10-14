@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page content is preserved 1`] = `
+<BrowserRouter
+  basename=""
+>
+  <Layout
+    allContent={
+      Object {
+        "homeContent": Object {
+          "article": "Grand opening of sawan.io.",
+          "articleTitle": "Latest news - 2018-10-14",
+        },
+        "navigationMenuContent": Object {
+          "about": "About",
+          "candleChart": "Candle Chart",
+          "cryptoCurrency": "Cryptocurrency",
+          "home": "Home",
+          "websiteName": "sawan.io",
+        },
+      }
+    }
+  >
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/candle"
+    />
+  </Layout>
+</BrowserRouter>
+`;

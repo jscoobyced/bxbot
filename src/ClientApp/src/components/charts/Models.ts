@@ -1,5 +1,3 @@
-import { ICandleChartDataService } from "./CandleChartDataService";
-
 export interface Pairing {
     timestamp: number;
     low: number;

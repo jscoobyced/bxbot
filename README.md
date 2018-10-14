@@ -21,6 +21,14 @@ yarn webpack
 popd
 ```
 
+- To run a mock version (and hot-reload)
+```
+pushd src/ClientApp
+yarn dev-server
+```
+
+Then you can open a browser on http://localhost:9000 to browse the mocked application.
+
 - To build the dotnet core application
 ```
 pushd src
