@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
+exports[`CandleChartPageHoc snapshot. 1`] = `
 <article>
   <CandleChartCurrencySelector
     currencyOptions={Array []}

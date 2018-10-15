@@ -15,28 +15,49 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
         super(props, state);
         const mode = process.env.mode;
         this.service = mode === 'development' ? new CandleChartDataServiceMock() : new CandleChartDataService();
-        this.state = { pairings: [], loading: false, currency: '', currencyOptions: [] };
+        this.state = {
+            pairings: [],
+            loadingCurrencyData: false,
+            loadingCurrencies: false,
+            currency: '',
+            currencyOptions: []
+        };
     }
 
     public readonly fetchCurrencyData = (currencyId: number) => {
-        if (this.state.loading) {
+        if (this.state.loadingCurrencyData) {
             return;
         }
         this.setState({
-            loading: true
+            loadingCurrencyData: true
         });
         this.service.fetchCurrencyData(currencyId)
             .then(data => {
                 this.setState({
-                    pairings: data.pairings,
-                    currency: data.currency,
-                    currencyOptions: data.currencyOptions,
-                    loading: false
+                    pairings: data,
+                    loadingCurrencyData: false
+                });
+            });
+    }
+
+    public readonly fetchCurrencies = () => {
+        if (this.state.loadingCurrencies) {
+            return;
+        }
+        this.setState({
+            loadingCurrencies: true
+        });
+        this.service.fetchCurrencies()
+            .then(data => {
+                this.setState({
+                    currencyOptions: data,
+                    loadingCurrencies: false
                 });
             });
     }
 
     public componentDidMount = () => {
+        this.fetchCurrencies();
         this.fetchCurrencyData(this.defaultCurrencyId);
     }
 
@@ -47,12 +68,12 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
                 currencyOptions={this.state.currencyOptions} />
             <CandleChartComponent
                 pairings={this.state.pairings}
-                loading={this.state.loading}
+                loading={this.state.loadingCurrencyData}
                 currency={this.state.currency} />
         </article>;
     }
 
-    private readonly onChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    public readonly onChangeCurrency = (event: React.ChangeEvent<HTMLSelectElement>) => {
         event.preventDefault();
         let currencyId = this.defaultCurrencyId;
         if (event.target.value) {

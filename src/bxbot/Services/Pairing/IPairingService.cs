@@ -6,5 +6,7 @@ namespace bxbot.Services
     public interface IPairingService
     {
         Task<IEnumerable<Pairing>> GetPairingAsync(int id, int interval);
+
+        Task<IEnumerable<SelectOption>> GetCurrenciesAsync();
     }
 }

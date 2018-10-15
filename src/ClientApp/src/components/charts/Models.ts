@@ -9,15 +9,10 @@ export interface Pairing {
     open: number;
 }
 
-export interface CandleChartDataServiceResponse {
-    pairings: Pairing[];
-    currency: string;
-    currencyOptions: SelectOption[];
-}
-
 export interface CandleChartPageData {
     pairings: Pairing[];
-    loading: boolean;
+    loadingCurrencyData: boolean;
+    loadingCurrencies: boolean;
     currency: string;
     currencyOptions: SelectOption[];
 }
