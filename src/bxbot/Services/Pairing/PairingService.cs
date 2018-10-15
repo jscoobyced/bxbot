@@ -19,7 +19,7 @@ namespace bxbot.Services
         public async Task<IEnumerable<SelectOption>> GetCurrenciesAsync()
         {
             var selectOptions = new List<SelectOption>();
-            var url = string.Format("https://bx.in.th/api/pairing/");
+            var url = "https://bx.in.th/api/pairing/";
             var result = await this.restConnector.GetAsync(url);
             if (string.IsNullOrWhiteSpace(result))
             {
