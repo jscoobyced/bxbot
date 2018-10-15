@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CandleChartCurrencySelector snapshot 1`] = `
+<select
+  id="currencySelector"
+  onChange={[Function]}
+/>
+`;
+
+exports[`CandleChartCurrencySelector snapshot 2`] = `
+<select
+  id="currencySelector"
+  onChange={[Function]}
+>
+  <option
+    key="0"
+    value={1}
+  >
+    THB/BTC
+  </option>
+</select>
+`;

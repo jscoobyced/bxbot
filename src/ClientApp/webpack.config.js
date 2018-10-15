@@ -14,6 +14,7 @@ const dist = path.join(root, 'dist');
 
 module.exports = (env, argv) => ({
   mode: "development",
+  devtool: 'source-map',
   entry: {
     'vendor': ['react', 'react-dom', 'react-router-dom'],
     'main': './src/index.tsx'

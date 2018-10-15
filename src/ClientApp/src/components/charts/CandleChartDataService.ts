@@ -1,3 +1,4 @@
+import { SelectOption } from '../Models';
 import { Pairing } from './Models';
 
 export class CandleChartDataService implements ICandleChartDataService {
@@ -7,17 +8,21 @@ export class CandleChartDataService implements ICandleChartDataService {
             return Promise.resolve([]);
         }
 
-        return this.fetchData(`/api/Data/pairing/${currency}/5`);
+        return this.fetchData<Pairing[]>(`/api/Data/pairing/${currency}/5`);
     }
 
-    private fetchData(url: string): Promise<Pairing[]> {
+    public fetchCurrencies(): Promise<SelectOption[]> {
+        return this.fetchData<SelectOption[]>(`/api/Data/currencies`);
+    }
+
+    private fetchData<T>(url: string): Promise<T> {
 
         return fetch(url)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(response.statusText);
                 }
-                return response.json() as Promise<Pairing[]>;
+                return response.json() as Promise<T>;
             })
             .catch((error: Error) => {
                 throw error;
@@ -27,4 +32,5 @@ export class CandleChartDataService implements ICandleChartDataService {
 
 export interface ICandleChartDataService {
     fetchCurrencyData(currency: number): Promise<Pairing[]>;
+    fetchCurrencies(): Promise<SelectOption[]>;
 }

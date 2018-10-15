@@ -5,6 +5,7 @@ namespace bxbot.Services
     using Newtonsoft.Json;
     using System.Linq;
     using System;
+    using System.Diagnostics;
 
     public class PairingService : IPairingService
     {
@@ -13,6 +14,42 @@ namespace bxbot.Services
         public PairingService(IRestConnector restConnector)
         {
             this.restConnector = restConnector;
+        }
+
+        public async Task<IEnumerable<SelectOption>> GetCurrenciesAsync()
+        {
+            var selectOptions = new List<SelectOption>();
+            var url = "https://bx.in.th/api/pairing/";
+            var result = await this.restConnector.GetAsync(url);
+            if (string.IsNullOrWhiteSpace(result))
+            {
+                return selectOptions;
+            }
+
+            var resultDictionary = JsonConvert.DeserializeObject<Dictionary<int, PairingResult>>(result);
+
+            if (resultDictionary == null)
+            {
+                return selectOptions;
+            }
+
+            foreach (var item in resultDictionary)
+            {
+                if (item.Value?.active?.ToLowerInvariant() != "true")
+                {
+                    continue;
+                }
+
+                var selectOption = new SelectOption()
+                {
+                    Text = $"{item.Value.primary_currency}/{item.Value.secondary_currency}",
+                    Value = int.Parse(item.Value.pairing_id)
+                };
+
+                selectOptions.Add(selectOption);
+            }
+
+            return selectOptions;
         }
 
         public async Task<IEnumerable<Pairing>> GetPairingAsync(int id, int interval)
@@ -25,9 +62,9 @@ namespace bxbot.Services
                 return pairings;
             }
 
-            if(result.Contains("["))
+            if (result.Contains("["))
                 result = result.Substring(result.IndexOf("["));
-            if(result.Contains("]"))
+            if (result.Contains("]"))
                 result = result.Substring(0, result.LastIndexOf("]") + 1);
             result = result.Replace("\n", "");
             var resultArray = JsonConvert.DeserializeObject<string[][]>(result);

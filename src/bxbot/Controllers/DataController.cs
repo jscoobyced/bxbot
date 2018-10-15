@@ -28,5 +28,19 @@ namespace bxbot.Controllers
 
             return await this.pairingService.GetPairingAsync(id, interval);
         }
+
+        [HttpGet("currencies")]
+        public async Task<IEnumerable<SelectOption>> Currencies()
+        {
+            if (this.pairingService == null)
+            {
+                return await Task.Run(() =>
+                {
+                    return new List<SelectOption>();
+                });
+            }
+
+            return await this.pairingService.GetCurrenciesAsync();
+        }
     }
 }

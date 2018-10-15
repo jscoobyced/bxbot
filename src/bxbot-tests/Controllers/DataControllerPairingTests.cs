@@ -7,7 +7,7 @@ namespace bxbot.tests
     using System.Threading.Tasks;
     using System.Collections.Generic;
 
-    public class DataControllerTests
+    public class DataControllerPairingTests
     {
         private const string ResultEmptyList = "because the default result should be an empty list.";
 
@@ -15,23 +15,23 @@ namespace bxbot.tests
         public void WithNullPairingService()
         {
             var dataController = new DataControllerBuilder()
-            .WithPairingService(null)
-            .Build();
+                .WithPairingService(null)
+                .Build();
 
             IEnumerable<Pairing> result = null;
             Func<Task> pairing = async () => result = await dataController.Pairing(1, 1);
             pairing.Should().NotThrow<NullReferenceException>("because it should return default empty Pairing data.");
 
             result.Should().NotBeNull(ResultEmptyList)
-            .And.BeEmpty(ResultEmptyList);
+                .And.BeEmpty(ResultEmptyList);
         }
 
         [Fact]
         public async Task WithPairingServiceNullPairings()
         {
             var dataController = new DataControllerBuilder()
-            .WithPairingService(new PairingServiceBuilder().WithNullPairings().Build())
-            .Build();
+                .WithPairingService(new PairingServiceBuilder().WithNullPairings().Build())
+                .Build();
 
             var result = await dataController.Pairing(1, 1);
 
@@ -42,8 +42,8 @@ namespace bxbot.tests
         public async Task WithPairingServiceNoPairings()
         {
             var dataController = new DataControllerBuilder()
-            .WithPairingService(new PairingServiceBuilder().WithNoPairings().Build())
-            .Build();
+                .WithPairingService(new PairingServiceBuilder().WithNoPairings().Build())
+                .Build();
 
             var result = await dataController.Pairing(1, 1);
 
@@ -57,10 +57,10 @@ namespace bxbot.tests
             pairings.Add(new Pairing());
 
             var dataController = new DataControllerBuilder()
-            .WithPairingService(new PairingServiceBuilder()
-            .WithPairings(pairings)
-            .Build())
-            .Build();
+                .WithPairingService(new PairingServiceBuilder()
+                .WithPairings(pairings)
+                .Build())
+                .Build();
 
             var result = await dataController.Pairing(1, 1);
 

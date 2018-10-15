@@ -1,13 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CandleChart component is unchanged. 1`] = `
-<div>
-  <h1>
-    BTC
-     on bx.in.th
-  </h1>
-  <div
-    id="candle_div"
-  />
-</div>
+<div
+  id="candle_div"
+/>
 `;
