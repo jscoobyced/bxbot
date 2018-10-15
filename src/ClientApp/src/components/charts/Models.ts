@@ -1,3 +1,6 @@
+import { ChangeEvent } from "react";
+import { SelectOption } from "../Models";
+
 export interface Pairing {
     timestamp: number;
     low: number;
@@ -6,7 +9,20 @@ export interface Pairing {
     open: number;
 }
 
+export interface CandleChartDataServiceResponse {
+    pairings: Pairing[];
+    currency: string;
+    currencyOptions: SelectOption[];
+}
+
 export interface CandleChartPageData {
+    pairings: Pairing[];
+    loading: boolean;
+    currency: string;
+    currencyOptions: SelectOption[];
+}
+
+export interface CandleChartComponentState {
     pairings: Pairing[];
     loading: boolean;
     currency: string;
@@ -19,4 +35,9 @@ export interface CandleChartPageProps {
 export interface CandleChartProps {
     currency: string;
     element: string;
+}
+
+export interface CandleChartCurrencyProps {
+    onChangeCurrency: (event: ChangeEvent<HTMLSelectElement>) => void;
+    currencyOptions: SelectOption[];
 }

@@ -3,16 +3,16 @@ import { CandleChart } from './CandleChart';
 import { CandleChartDrawer } from './CandleChartDrawer';
 import { DataFormatter } from './DataFormatter';
 import { GoogleChartInitializer } from './GoogleChartInitializer';
-import { CandleChartPageData } from './Models';
+import { CandleChartComponentState } from './Models';
 
-export class CandleChartComponent extends React.Component<CandleChartPageData> {
+export class CandleChartComponent extends React.Component<CandleChartComponentState> {
     private static readonly ChartElement = "candle_div";
     private candleChart: CandleChartDrawer = new CandleChartDrawer([], "");
     private readonly bollingerSize = 20;
     private readonly dataFormatter: DataFormatter = new DataFormatter();
     private chartData: any;
 
-    constructor(props: CandleChartPageData) {
+    constructor(props: CandleChartComponentState) {
         super(props);
     }
 
@@ -31,8 +31,7 @@ export class CandleChartComponent extends React.Component<CandleChartPageData> {
     public render(): JSX.Element {
         return <CandleChart
             element={CandleChartComponent.ChartElement}
-            currency={this.props.currency}
-        />;
+            currency={this.props.currency} />;
     }
 
     private readonly drawChart = () => {

@@ -2,31 +2,10 @@
 
 exports[`CandleChartPageHoc snapshot for currency 5. 1`] = `
 <article>
-  <select
-    id="currencySelector"
-    onChange={[Function]}
-  >
-    <option
-      value="1"
-    >
-      THB/BTC
-    </option>
-    <option
-      value="25"
-    >
-      THB/XRP
-    </option>
-    <option
-      value="27"
-    >
-      THB/BCH
-    </option>
-    <option
-      value="29"
-    >
-      THB/XZC
-    </option>
-  </select>
+  <CandleChartCurrencySelector
+    currencyOptions={Array []}
+    onChangeCurrency={[Function]}
+  />
   <CandleChartComponent
     currency=""
     loading={true}

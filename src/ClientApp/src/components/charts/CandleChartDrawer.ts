@@ -28,8 +28,14 @@ export class CandleChartDrawer {
                 risingColor: { strokeWidth: 0, fill: '#0f9d58' }
             },
             colors: ['black'],
-            height: 800,
+            height: 700,
             legend: 'none',
+            chartArea: {
+                left: 100,
+                top: 20,
+                width: "100%",
+                height: "90%"
+            },
             series: {
                 1: {
                     color: '#FFCDD2',

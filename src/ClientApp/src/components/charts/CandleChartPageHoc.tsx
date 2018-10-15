@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { SelectOption } from '../Models';
 import { CandleChartComponent } from './CandleChartComponent';
+import { CandleChartCurrencySelector } from './CandleChartCurrencySelector';
 import { CandleChartDataService, ICandleChartDataService } from './CandleChartDataService';
 import { CandleChartDataServiceMock } from './CandleChartDataServiceMock';
-import { CandleChartPageData, CandleChartPageProps } from './Models';
+import { CandleChartPageData } from './Models';
 
 export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData> {
 
@@ -13,7 +15,7 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
         super(props, state);
         const mode = process.env.mode;
         this.service = mode === 'development' ? new CandleChartDataServiceMock() : new CandleChartDataService();
-        this.state = { pairings: [], loading: false, currency: '' };
+        this.state = { pairings: [], loading: false, currency: '', currencyOptions: [] };
     }
 
     public readonly fetchCurrencyData = (currencyId: number) => {
@@ -26,8 +28,9 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
         this.service.fetchCurrencyData(currencyId)
             .then(data => {
                 this.setState({
-                    pairings: data,
-                    currency: 'BTC',
+                    pairings: data.pairings,
+                    currency: data.currency,
+                    currencyOptions: data.currencyOptions,
                     loading: false
                 });
             });
@@ -39,12 +42,9 @@ export class CandleChartPageHoc extends React.Component<{}, CandleChartPageData>
 
     public render() {
         return <article>
-            <select id='currencySelector' onChange={this.onChangeCurrency}>
-                <option value='1'>THB/BTC</option>
-                <option value='25'>THB/XRP</option>
-                <option value='27'>THB/BCH</option>
-                <option value='29'>THB/XZC</option>
-            </select>
+            <CandleChartCurrencySelector
+                onChangeCurrency={this.onChangeCurrency}
+                currencyOptions={this.state.currencyOptions} />
             <CandleChartComponent
                 pairings={this.state.pairings}
                 loading={this.state.loading}

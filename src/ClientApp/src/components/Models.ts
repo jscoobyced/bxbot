@@ -3,3 +3,8 @@ export class Constants {
 
     public static readonly ImagePath = `${Constants.StaticContent}/images/`;
 }
+
+export interface SelectOption {
+    value: number;
+    text: string;
+}
