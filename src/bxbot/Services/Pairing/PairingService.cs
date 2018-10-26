@@ -22,6 +22,12 @@ namespace bxbot.Services
         public async Task<IEnumerable<SelectOption>> GetCurrenciesAsync()
         {
             var selectOptions = new List<SelectOption>();
+
+            if (string.IsNullOrEmpty(this.options?.Value?.Url?.Currencies))
+            {
+                return selectOptions;
+            }
+
             var result = await this.restConnector.GetAsync(this.options.Value.Url.Currencies);
             if (string.IsNullOrWhiteSpace(result))
             {
@@ -57,6 +63,11 @@ namespace bxbot.Services
         public async Task<IEnumerable<Pairing>> GetPairingAsync(int id, int interval)
         {
             var pairings = new List<Pairing>();
+            if (string.IsNullOrEmpty(this.options?.Value?.Url?.Pairings))
+            {
+                return pairings;
+            }
+
             var url = string.Format(this.options.Value.Url.Pairings, id, interval, DateTime.Now.Millisecond);
             var result = await this.restConnector.GetAsync(url);
             if (string.IsNullOrWhiteSpace(result))

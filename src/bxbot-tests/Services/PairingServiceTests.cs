@@ -24,7 +24,7 @@ namespace bxbot.tests
                                     .WithResult(result)
                                     .Build();
 
-            var pairingService = new PairingService(restConnector);
+            var pairingService = new PairingService(restConnector, null);
 
             var pairings = await pairingService.GetPairingAsync(1, 1);
 
@@ -51,7 +51,7 @@ namespace bxbot.tests
                                     .WithResult(result)
                                     .Build();
 
-            var pairingService = new PairingService(restConnector);
+            var pairingService = new PairingService(restConnector, null);
 
             var selectOptions = await pairingService.GetCurrenciesAsync();
 
