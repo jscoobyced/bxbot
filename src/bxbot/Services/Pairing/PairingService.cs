@@ -2,6 +2,7 @@ namespace bxbot.Services
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Options;
     using Newtonsoft.Json;
     using System.Linq;
     using System;
@@ -10,17 +11,18 @@ namespace bxbot.Services
     public class PairingService : IPairingService
     {
         private readonly IRestConnector restConnector;
+        private readonly IOptions<AppSettings> options;
 
-        public PairingService(IRestConnector restConnector)
+        public PairingService(IRestConnector restConnector, IOptions<AppSettings> options)
         {
             this.restConnector = restConnector;
+            this.options = options;
         }
 
         public async Task<IEnumerable<SelectOption>> GetCurrenciesAsync()
         {
             var selectOptions = new List<SelectOption>();
-            var url = "https://bx.in.th/api/pairing/";
-            var result = await this.restConnector.GetAsync(url);
+            var result = await this.restConnector.GetAsync(this.options.Value.Url.Currencies);
             if (string.IsNullOrWhiteSpace(result))
             {
                 return selectOptions;
@@ -55,7 +57,7 @@ namespace bxbot.Services
         public async Task<IEnumerable<Pairing>> GetPairingAsync(int id, int interval)
         {
             var pairings = new List<Pairing>();
-            var url = string.Format("https://bx.in.th/api/chart/price/?pairing={0}&int={1}&limit=1&callback=display&_={2}", id, interval, DateTime.Now.Millisecond);
+            var url = string.Format(this.options.Value.Url.Pairings, id, interval, DateTime.Now.Millisecond);
             var result = await this.restConnector.GetAsync(url);
             if (string.IsNullOrWhiteSpace(result))
             {
