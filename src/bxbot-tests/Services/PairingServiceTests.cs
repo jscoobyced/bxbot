@@ -24,7 +24,11 @@ namespace bxbot.tests
                                     .WithResult(result)
                                     .Build();
 
-            var pairingService = new PairingService(restConnector, null);
+            var ioptions = new IOptionBuilder()
+                                .WithDefaultPairingsUrl()
+                                .Build();
+
+            var pairingService = new PairingService(restConnector, ioptions);
 
             var pairings = await pairingService.GetPairingAsync(1, 1);
 
@@ -50,8 +54,11 @@ namespace bxbot.tests
             var restConnector = new RestConnectorBuilder()
                                     .WithResult(result)
                                     .Build();
+            var ioptions = new IOptionBuilder()
+                                .WithDefaultCurrenciesUrl()
+                                .Build();
 
-            var pairingService = new PairingService(restConnector, null);
+            var pairingService = new PairingService(restConnector, ioptions);
 
             var selectOptions = await pairingService.GetCurrenciesAsync();
 
@@ -60,5 +67,42 @@ namespace bxbot.tests
             selectOptionList.Count.Should().Be(length, "the data returned is such.");
         }
 
+        [Fact]
+        public async Task PairingServiceWithNullAppSettings()
+        {
+            var restConnector = new RestConnectorBuilder()
+                                    .WithResult(string.Empty)
+                                    .Build();
+            var ioptions = new IOptionBuilder()
+                                .BuildNullAppSettings();
+
+            var pairingService = new PairingService(restConnector, ioptions);
+
+            var selectOptions = await pairingService.GetCurrenciesAsync();
+            selectOptions.Should().BeEmpty("the result should be empty if there is no configuration available.");
+            var pairings = await pairingService.GetPairingAsync(1, 1);
+            pairings.Should().BeEmpty("the result should be empty if there is no configuration available.");
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        public async Task PairingServiceWithNullUrls(string url)
+        {
+            var restConnector = new RestConnectorBuilder()
+                                    .WithResult(string.Empty)
+                                    .Build();
+            var ioptions = new IOptionBuilder()
+                                .WithCurrenciesUrl(url)
+                                .WithPairingsUrl(url)
+                                .Build();
+
+            var pairingService = new PairingService(restConnector, ioptions);
+
+            var selectOptions = await pairingService.GetCurrenciesAsync();
+            selectOptions.Should().BeEmpty("the result should be empty if the URL is null or empty.");
+            var pairings = await pairingService.GetPairingAsync(1, 1);
+            pairings.Should().BeEmpty("the result should be empty if there is no configuration available.");
+        }
     }
 }
