@@ -25,6 +25,7 @@ namespace bxbot
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.Configure<AppSettings>(Configuration);
             DependencyInjection.Inject(services);
         }
 

@@ -15,7 +15,7 @@ export class CandleChartDataService implements ICandleChartDataService {
         return this.fetchData<SelectOption[]>(`/api/Data/currencies`);
     }
 
-    private fetchData<T>(url: string): Promise<T> {
+    protected fetchData<T>(url: string): Promise<T> {
 
         return fetch(url)
             .then(response => {
