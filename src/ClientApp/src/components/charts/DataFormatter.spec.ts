@@ -1,6 +1,8 @@
+import { TestUtils } from '../../../tests/TestUtils';
 import { DateUtil } from './../../utils/DateUtils';
+import { DecisionMaker } from './analysis/DecisionMaker';
 import { DataFormatter } from './DataFormatter';
-import { Pairing } from './Models';
+import { Decision, Pairing } from './Models';
 
 describe('DataFormatter', () => {
 
@@ -31,29 +33,49 @@ describe('DataFormatter', () => {
 
     const negativeHour = DateUtil.toHumanHours(new Date(-1));
     const positiveHour = DateUtil.toHumanHours(new Date(0));
+    const decisionMaker = new DecisionMaker([TestUtils.mockAnalyser(Decision.Sell, 99)]);
 
     it('format empty array', () => {
-        const result = dataFormatter.formatBollingerData([], 0);
+        const result = dataFormatter.formatData([], 0);
         expect(result).toEqual([]);
     });
 
     it('format single value array', () => {
-        let result = dataFormatter.formatBollingerData([zeroPairing], 0);
-        expect(result).toEqual([[positiveHour, 0, 0, 0, 0, undefined, undefined, undefined]]);
-        result = dataFormatter.formatBollingerData([positivePairing], 0);
-        expect(result).toEqual([[positiveHour, 1, 1, 1, 1, undefined, undefined, undefined]]);
+        let result = dataFormatter.formatData([zeroPairing], 0);
+        expect(result).toEqual([[positiveHour, 0, 0, 0, 0, undefined, null, null, undefined, null, null, undefined]]);
+        result = dataFormatter.formatData([positivePairing], 0);
+        expect(result).toEqual([[positiveHour, 1, 1, 1, 1, undefined, null, null, undefined, null, null, undefined]]);
     });
 
     it('format negative array', () => {
-        const result = dataFormatter.formatBollingerData([negativePairing], 0);
-        expect(result).toEqual([[negativeHour, -1, -1, -1, -1, undefined, undefined, undefined]]);
+        const result = dataFormatter.formatData([negativePairing], 0);
+        expect(result).toEqual(
+            [[negativeHour, -1, -1, -1, -1, undefined, null, null, undefined, null, null, undefined]]);
     });
 
     it('format array', () => {
-        const result = dataFormatter.formatBollingerData([negativePairing, zeroPairing, positivePairing], 0);
+        const result = dataFormatter.formatData([negativePairing, zeroPairing, positivePairing], 0);
         expect(result).toEqual([
-            [negativeHour, -1, -1, -1, -1, undefined, undefined, undefined],
-            [positiveHour, 0, 0, 0, 0, undefined, undefined, undefined],
-            [positiveHour, 1, 1, 1, 1, undefined, undefined, undefined]]);
+            [negativeHour, -1, -1, -1, -1, undefined, null, null, undefined, null, null, undefined],
+            [positiveHour, 0, 0, 0, 0, undefined, null, null, undefined, null, null, undefined],
+            [positiveHour, 1, 1, 1, 1, undefined, null, null, undefined, null, null, undefined]]);
+    });
+
+    it('format with decisionMaker', () => {
+        const result = dataFormatter.formatData([negativePairing], 0, decisionMaker);
+        expect(result).toEqual([
+            [
+                "06:59",
+                -1,
+                -1,
+                -1,
+                -1,
+                undefined,
+                "Sell",
+                "Confidence to sell 99 %",
+                undefined,
+                "Sell",
+                "Confidence to sell 99 %",
+                undefined]]);
     });
 });

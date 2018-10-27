@@ -36,3 +36,14 @@ export interface CandleChartCurrencyProps {
     onChangeCurrency: (event: ChangeEvent<HTMLSelectElement>) => void;
     currencyOptions: SelectOption[];
 }
+
+export interface Pattern {
+    confidence: number;
+    decision: Decision;
+}
+
+export enum Decision {
+    Nothing = 0,
+    Buy = 1,
+    Sell = 2
+}

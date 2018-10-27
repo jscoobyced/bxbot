@@ -19,7 +19,7 @@ export class CandleChartComponent extends React.Component<CandleChartComponentSt
     public componentDidUpdate() {
         const { pairings } = this.props;
         if (pairings !== []) {
-            this.chartData = this.dataFormatter.formatBollingerData(pairings, this.bollingerSize);
+            this.chartData = this.dataFormatter.formatData(pairings, this.bollingerSize);
             if (!GoogleChartInitializer.IsReady()) {
                 new GoogleChartInitializer().Init(this.drawChart);
             } else {
