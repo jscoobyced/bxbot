@@ -14,7 +14,7 @@ export class DecisionMaker {
         if (pairings && pairings.length > 0) {
             this.analysers.forEach(analyser => {
                 if (analyser) {
-                    patterns.push(analyser.analyse(pairings, index));
+                    patterns.push(analyser.analyse(pairings, index, upper));
                 }
             });
 

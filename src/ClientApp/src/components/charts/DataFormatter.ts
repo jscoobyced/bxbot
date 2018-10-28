@@ -5,8 +5,12 @@ import { Pairing } from './Models';
 
 export class DataFormatter {
 
-    public formatData(chartData: Pairing[], bollingerSize: number, decisionMaker?: DecisionMaker): any[] {
-        const lengthToShow = 100;
+    public formatData(
+        chartData: Pairing[],
+        bollingerSize: number,
+        decisionMaker?: DecisionMaker,
+        hours: number = 12): any[] {
+        const lengthToShow = hours * 12;
         const startIndex = Math.max(0, chartData.length - lengthToShow);
         const bollingerBand = this.createBollingerBand(chartData, bollingerSize, lengthToShow);
         let bollingerBandIndex = bollingerSize - 1;

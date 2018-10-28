@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { DecisionMaker } from './analysis/DecisionMaker';
+import { IAnalyser } from './analysis/Models';
+import { ThreeLinesBuy } from './analysis/ThreeLinesBuy';
 import { CandleChart } from './CandleChart';
 import { CandleChartDrawer } from './CandleChartDrawer';
 import { DataFormatter } from './DataFormatter';
@@ -10,16 +13,20 @@ export class CandleChartComponent extends React.Component<CandleChartComponentSt
     private candleChart: CandleChartDrawer = new CandleChartDrawer([], "");
     private readonly bollingerSize = 20;
     private readonly dataFormatter: DataFormatter = new DataFormatter();
+    private readonly analysers: IAnalyser[];
+    private readonly decisionMaker: DecisionMaker;
     private chartData: any;
 
     constructor(props: CandleChartComponentState) {
         super(props);
+        this.analysers = [new ThreeLinesBuy()];
+        this.decisionMaker = new DecisionMaker(this.analysers);
     }
 
     public componentDidUpdate() {
         const { pairings } = this.props;
         if (pairings !== []) {
-            this.chartData = this.dataFormatter.formatData(pairings, this.bollingerSize);
+            this.chartData = this.dataFormatter.formatData(pairings, this.bollingerSize, this.decisionMaker);
             if (!GoogleChartInitializer.IsReady()) {
                 new GoogleChartInitializer().Init(this.drawChart);
             } else {
