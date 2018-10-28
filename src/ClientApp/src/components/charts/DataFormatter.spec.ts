@@ -65,7 +65,7 @@ describe('DataFormatter', () => {
         const result = dataFormatter.formatData([negativePairing], 0, decisionMaker);
         expect(result).toEqual([
             [
-                "06:59",
+                negativeHour,
                 -1,
                 -1,
                 -1,

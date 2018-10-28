@@ -2,7 +2,9 @@ import { Pairing } from "../Models";
 
 export class AnalysisHelper {
     public static IsDropping(first: Pairing, second: Pairing): boolean {
-        return second.close < first.close
+        return first.open > first.close
+            && second.open > second.close
+            && second.close < first.close
             && second.low < first.low
             && second.open < first.open
             && second.high < first.high;
