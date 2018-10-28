@@ -56,12 +56,12 @@ test('ThreeLinesBuy analysis is skipped because of parameters', () => {
 
 test('ThreeLinesBuy analysis is Buy', () => {
     const threeLinesBuy = new ThreeLinesBuy();
-    let result = threeLinesBuy.analyse([three, two, one, current], 3, true);
+    const result = threeLinesBuy.analyse([three, two, one, current], 3, true);
     expect(result).toEqual(buyPattern);
 });
 
 test('ThreeLinesBuy analysis is Nothing', () => {
     const threeLinesBuy = new ThreeLinesBuy();
-    let result = threeLinesBuy.analyse([three, two, current, one], 3, true);
+    const result = threeLinesBuy.analyse([three, two, current, one], 3, true);
     expect(result).toEqual(DefaultPattern);
 });
