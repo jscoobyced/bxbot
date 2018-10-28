@@ -1,3 +1,6 @@
+import { IAnalyser } from "../src/components/charts/analysis/Models";
+import { Decision, Pairing, Pattern } from "../src/components/charts/Models";
+
 export class TestUtils {
 
     public static mockFetch(data: any) {
@@ -22,6 +25,18 @@ export class TestUtils {
         return jest.fn().mockImplementation(() => {
             throw new Error(error);
         });
+    }
+
+    public static mockAnalyser(decision: Decision, confidence: number): IAnalyser {
+        const analyserMock: IAnalyser = {
+            analyse: jest.fn((pairings: Pairing[], index: number): Pattern => {
+                return {
+                    confidence,
+                    decision
+                };
+            })
+        };
+        return analyserMock;
     }
 }
 

@@ -47,6 +47,25 @@ footer {
     text-align: center;
 }
 
+main {
+    width: 100%;
+    padding-top: 50px;
+}
+
+article {
+    width: 80%;
+    margin: 0 auto;
+}
+
+article h1 {
+    padding-bottom: 10px;
+}
+
+select {
+    background: white;
+    padding: 5px;
+}
+
 nav {
     overflow: hidden;
     background-color: $ternary;
@@ -103,18 +122,4 @@ nav a:hover, .dropdown:hover .dropbtn {
 
 .dropdown-content:hover, .dropdown:hover + .dropdown-content {
     display: inline-block;
-}
-
-main {
-    width: 100%;
-    padding-top: 50px;
-}
-
-article {
-    width: 80%;
-    margin: 0 auto;
-}
-
-article h1 {
-    padding-bottom: 10px;
 }
