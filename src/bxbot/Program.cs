@@ -19,6 +19,7 @@ namespace bxbot
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel(s => s.AddServerHeader = false)
                 .UseStartup<Startup>()
                 .Build();
     }
