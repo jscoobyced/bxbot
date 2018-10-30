@@ -1,7 +1,9 @@
 namespace bxbot.Controllers
 {
+    using System;
     using System.Diagnostics;
     using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
 
     public class HomeController : Controller
     {
@@ -13,6 +15,13 @@ namespace bxbot.Controllers
         public IActionResult Error()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult<string> CspReport([FromBody] CspReportRequest request)
+        {
+            Console.WriteLine($"Blocked URL -------------------> {request.CspReport.BlockedUri}");
+            return string.Empty;
         }
     }
 }
