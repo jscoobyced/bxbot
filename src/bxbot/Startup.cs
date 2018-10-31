@@ -51,6 +51,8 @@ namespace bxbot
                 app.UseExceptionHandler(ErrorPage);
             }
 
+            var csp = Configuration.GetSection("Csp").Get<Csp>();
+
             app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains());
             app.UseXContentTypeOptions();
             app.UseReferrerPolicy(opts => opts.NoReferrer());
@@ -61,12 +63,15 @@ namespace bxbot
                 .BlockAllMixedContent()
                 .StyleSources(s => s.Self())
                 .StyleSources(s => s.UnsafeInline())
+                .StyleSources(s => s.CustomSources(csp.Styles.ToArray()))
                 .FontSources(s => s.Self())
+                .FontSources(s => s.CustomSources(csp.Fonts.ToArray()))
                 .FormActions(s => s.Self())
                 .FrameAncestors(s => s.Self())
                 .ImageSources(s => s.Self())
                 .ScriptSources(s => s.Self())
-                .ReportUris(s => s.Uris("/Home/CspReport"))
+                .ScriptSources(s => s.CustomSources(csp.Scripts.ToArray()))
+                .ReportUris(s => s.Uris(csp.Report))
             );
 
             app.UseStaticFiles();
