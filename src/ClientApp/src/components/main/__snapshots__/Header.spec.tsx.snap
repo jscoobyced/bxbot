@@ -5,7 +5,7 @@ exports[`Header component is unchanged. 1`] = `
   <img
     alt=" logo"
     className="logo"
-    src="/dist/images//wings.svg"
+    src="/dist/images//star.png"
     title=""
   />
   <span />
