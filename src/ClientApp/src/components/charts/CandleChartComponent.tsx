@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { DecisionMaker } from './analysis/DecisionMaker';
 import { IAnalyser } from './analysis/Models';
+import { ThreeBlackCrows } from './analysis/ThreeBlackCrows';
 import { ThreeLinesBuy } from './analysis/ThreeLinesBuy';
+import { TwoBlackGapping } from './analysis/TwoBlackGapping';
 import { CandleChart } from './CandleChart';
 import { CandleChartDrawer } from './CandleChartDrawer';
 import { DataFormatter } from './DataFormatter';
@@ -19,7 +21,7 @@ export class CandleChartComponent extends React.Component<CandleChartComponentSt
 
     constructor(props: CandleChartComponentState) {
         super(props);
-        this.analysers = [new ThreeLinesBuy()];
+        this.analysers = [new ThreeLinesBuy(), new TwoBlackGapping(), new ThreeBlackCrows()];
         this.decisionMaker = new DecisionMaker(this.analysers);
     }
 

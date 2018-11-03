@@ -27,12 +27,13 @@ export class TestUtils {
         });
     }
 
-    public static mockAnalyser(decision: Decision, confidence: number): IAnalyser {
+    public static mockAnalyser(decision: Decision, confidence: number, comment: string): IAnalyser {
         return {
             analyse: jest.fn((pairings: Pairing[], index: number): Pattern => {
                 return {
                     confidence,
-                    decision
+                    decision,
+                    comment
                 };
             })
         };
