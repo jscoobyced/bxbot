@@ -10,7 +10,7 @@ export class Header extends React.Component<HeaderProps> {
     }
 
     public render() {
-        const logoSrc = `${Constants.ImagePath}/wings.svg`;
+        const logoSrc = `${Constants.ImagePath}/star.png`;
         return <header>
             <img src={logoSrc} className='logo'
                 alt={this.props.navigationMenuContent.websiteName + ' logo'}
