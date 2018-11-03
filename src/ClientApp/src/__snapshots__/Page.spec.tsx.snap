@@ -8,15 +8,15 @@ exports[`Page content is preserved 1`] = `
     allContent={
       Object {
         "homeContent": Object {
-          "article": "Grand opening of sawan.io.",
+          "article": "Opening of bxbot. This website is a demo of ReactJS and netcore 2.1, and includes a Google Chart based crypto-currency trend and simple analysis. This website is my training material and might not work as you expect. Use it for education purpose, not as a trading tool.",
           "articleTitle": "Latest news - 2018-10-14",
         },
         "navigationMenuContent": Object {
           "about": "About",
           "candleChart": "Candle Chart",
-          "cryptoCurrency": "Cryptocurrency",
+          "cryptoCurrency": "Crypto-currency",
           "home": "Home",
-          "websiteName": "sawan.io",
+          "websiteName": "bxbot",
         },
       }
     }
