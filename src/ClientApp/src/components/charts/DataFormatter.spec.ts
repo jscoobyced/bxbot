@@ -33,7 +33,7 @@ describe('DataFormatter', () => {
 
     const negativeHour = DateUtil.toHumanHours(new Date(-1));
     const positiveHour = DateUtil.toHumanHours(new Date(0));
-    const decisionMaker = new DecisionMaker([TestUtils.mockAnalyser(Decision.Sell, 99)]);
+    const decisionMaker = new DecisionMaker([TestUtils.mockAnalyser(Decision.Sell, 99, "none")]);
 
     it('format empty array', () => {
         const result = dataFormatter.formatData([], 0);
@@ -72,10 +72,10 @@ describe('DataFormatter', () => {
                 -1,
                 undefined,
                 "Sell",
-                "Confidence to sell 99 %",
+                "Confidence to sell 99 %. Note: none",
                 undefined,
                 "Sell",
-                "Confidence to sell 99 %",
+                "Confidence to sell 99 %. Note: none",
                 undefined]]);
     });
 });

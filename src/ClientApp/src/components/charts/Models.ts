@@ -40,6 +40,7 @@ export interface CandleChartCurrencyProps {
 export interface Pattern {
     confidence: number;
     decision: Decision;
+    comment: string;
 }
 
 export enum Decision {

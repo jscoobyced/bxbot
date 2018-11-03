@@ -40,10 +40,10 @@ export class DecisionMaker {
         let response: string[] | null[];
         switch (pattern.decision) {
             case Decision.Buy:
-                response = ['Buy', `Confidence to buy ${pattern.confidence} %`];
+                response = ['Buy', `Confidence to buy ${pattern.confidence} %. Note: ${pattern.comment}`];
                 break;
             case Decision.Sell:
-                response = ['Sell', `Confidence to sell ${pattern.confidence} %`];
+                response = ['Sell', `Confidence to sell ${pattern.confidence} %. Note: ${pattern.comment}`];
                 break;
             default:
                 response = [null, null];

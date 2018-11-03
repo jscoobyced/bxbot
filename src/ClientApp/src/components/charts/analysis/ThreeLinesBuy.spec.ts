@@ -1,4 +1,4 @@
-import { Decision, Pairing } from "../Models";
+import { Decision, Pairing, Pattern } from "../Models";
 import { DefaultPattern } from "./Models";
 import { ThreeLinesBuy } from "./ThreeLinesBuy";
 
@@ -34,9 +34,10 @@ const current: Pairing = {
     timestamp: 123456789
 };
 
-const buyPattern = {
+const buyPattern: Pattern = {
     decision: Decision.Buy,
-    confidence: 84
+    confidence: 84,
+    comment: "Three Lines Strike pattern recognized."
 };
 
 test('ThreeLinesBuy analysis is skipped because of parameters', () => {

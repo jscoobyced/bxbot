@@ -4,7 +4,8 @@ export interface IAnalyser {
     analyse(pairings: Pairing[], index: number, upper: boolean): Pattern;
 }
 
-export const DefaultPattern = {
+export const DefaultPattern: Pattern = {
     confidence: 0,
-    decision: Decision.Nothing
+    decision: Decision.Nothing,
+    comment: ""
 };
