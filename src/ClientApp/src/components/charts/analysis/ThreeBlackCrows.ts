@@ -14,14 +14,6 @@ export class ThreeBlackCrows implements IAnalyser {
         const one = pairings[index - 1];
         const current = pairings[index];
 
-        if (two.high === 219950) {
-            console.log(AnalysisHelper.IsRaising(four, three));
-            console.log(AnalysisHelper.IsReversingDown(three, two));
-            console.log(AnalysisHelper.IsDropping(two, one));
-            console.log(AnalysisHelper.IsDropping(one, current));
-            console.log(two.high > three.high);
-        }
-
         if (AnalysisHelper.IsRaising(four, three)
             && AnalysisHelper.IsReversingDown(three, two)
             && AnalysisHelper.IsDropping(two, one)
