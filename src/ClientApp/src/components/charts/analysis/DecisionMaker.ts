@@ -19,8 +19,8 @@ export class DecisionMaker {
             });
 
             if (patterns.length > 0) {
-                const sortedPatterns = patterns.sort(this.highestConfidence);
-                return this.formatAnnotation(sortedPatterns[0]);
+                patterns.sort(this.highestConfidence);
+                return this.formatAnnotation(patterns[0]);
             }
         }
         return [null, null];
