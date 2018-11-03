@@ -28,7 +28,7 @@ export class TestUtils {
     }
 
     public static mockAnalyser(decision: Decision, confidence: number): IAnalyser {
-        const analyserMock: IAnalyser = {
+        return {
             analyse: jest.fn((pairings: Pairing[], index: number): Pattern => {
                 return {
                     confidence,
@@ -36,7 +36,6 @@ export class TestUtils {
                 };
             })
         };
-        return analyserMock;
     }
 }
 

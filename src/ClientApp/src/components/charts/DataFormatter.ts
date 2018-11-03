@@ -9,7 +9,7 @@ export class DataFormatter {
         chartData: Pairing[],
         bollingerSize: number,
         decisionMaker?: DecisionMaker,
-        hours: number = 12): any[] {
+        hours = 12): any[] {
         const lengthToShow = hours * 12;
         const startIndex = Math.max(0, chartData.length - lengthToShow);
         const bollingerBand = this.createBollingerBand(chartData, bollingerSize, lengthToShow);

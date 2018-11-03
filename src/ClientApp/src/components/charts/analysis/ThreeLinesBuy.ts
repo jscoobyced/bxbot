@@ -24,5 +24,4 @@ export class ThreeLinesBuy implements IAnalyser {
 
         return DefaultPattern;
     }
-
 }
