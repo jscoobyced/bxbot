@@ -1,0 +1,61 @@
+nav {
+    display: inline-block;
+}
+
+nav a {
+	padding: 0.5em;
+	display: block;
+	white-space: nowrap;
+    text-decoration: none;
+    color: $primary;
+    background-color: $ternary;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+nav ul ul li:first-child a {
+    border-radius: 0;
+}
+
+nav ul li:first-child a {
+    border-radius: 10px 0 0 10px;
+}
+
+nav ul li:last-child a {
+    border-radius: 0 10px 10px 0;
+}
+
+nav ul ul li:last-child a {
+    border-radius: 0 0 10px 10px;
+}
+
+nav li {
+	position: relative;
+	display: inline-block;
+}
+
+nav ul ul {
+	display: none;
+	position: absolute;
+}
+
+nav li:hover > ul {
+	display: block;
+}
+
+nav ul ul ul {
+	left: 100%;
+	top: 0;
+}
+
+nav > ul > li > ul > li {
+	min-width: 100%;
+}
+
+.menu-space {
+    display: inline-block;
+    width: 80px;
+}

@@ -17,19 +17,30 @@ export class Header extends React.Component<HeaderProps> {
                 title={this.props.navigationMenuContent.websiteName} />
             <span>{this.props.navigationMenuContent.websiteName}</span>
             <nav>
-                <NavLink to={'/'}>
-                    {this.props.navigationMenuContent.home}
-                </NavLink>
-                <a href='#' className='menu-space'>&nbsp;</a>
-                <a href='#' className='dropdown'>{this.props.navigationMenuContent.cryptoCurrency}</a>
-                <div className="dropdown-content">
-                    <NavLink to={'/candle'}>
-                        {this.props.navigationMenuContent.candleChart}
+                <ul>
+                    <li><NavLink to={'/'}>
+                        {this.props.navigationMenuContent.home}
                     </NavLink>
-                </div>
-                <NavLink to={'/'}>
-                    {this.props.navigationMenuContent.about}
-                </NavLink>
+                    </li>
+                    <li>
+                        <a href='#' className='menu-space'>&nbsp;</a>
+                    </li>
+                    <li>
+                        <a href='#' className='dropdown'>{this.props.navigationMenuContent.cryptoCurrency}</a>
+                        <ul>
+                            <li>
+                                <NavLink to={'/candle'}>
+                                    {this.props.navigationMenuContent.candleChart}
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <NavLink to={'/'}>
+                            {this.props.navigationMenuContent.about}
+                        </NavLink>
+                    </li>
+                </ul>
             </nav>
         </header>;
     }
