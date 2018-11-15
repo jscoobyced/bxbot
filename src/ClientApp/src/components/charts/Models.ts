@@ -28,7 +28,6 @@ export interface CandleChartPageProps {
 }
 
 export interface CandleChartProps {
-    currency: string;
     element: string;
 }
 

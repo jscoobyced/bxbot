@@ -10,35 +10,45 @@ exports[`Header component is unchanged. 1`] = `
   />
   <span />
   <nav>
-    <NavLink
-      activeClassName="active"
-      aria-current="page"
-      to="/"
-    />
-    <a
-      className="menu-space"
-      href="#"
-    >
-       
-    </a>
-    <a
-      className="dropdown"
-      href="#"
-    />
-    <div
-      className="dropdown-content"
-    >
-      <NavLink
-        activeClassName="active"
-        aria-current="page"
-        to="/candle"
-      />
-    </div>
-    <NavLink
-      activeClassName="active"
-      aria-current="page"
-      to="/"
-    />
+    <ul>
+      <li>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          to="/"
+        />
+      </li>
+      <li>
+        <a
+          className="menu-space"
+          href="#"
+        >
+           
+        </a>
+      </li>
+      <li>
+        <a
+          className="dropdown"
+          href="#"
+        />
+        <ul>
+          <li>
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              to="/candle"
+            />
+          </li>
+        </ul>
+      </li>
+      <li>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          to="/"
+        />
+      </li>
+    </ul>
   </nav>
 </header>
 `;
