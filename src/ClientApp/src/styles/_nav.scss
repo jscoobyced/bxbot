@@ -59,3 +59,10 @@ nav > ul > li > ul > li {
     display: inline-block;
     width: 80px;
 }
+
+@media screen and (max-width: 320px) {
+
+	.menu-space {
+		width: 20px;
+	}	
+}

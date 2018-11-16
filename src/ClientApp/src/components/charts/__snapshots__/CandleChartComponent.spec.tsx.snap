@@ -1,15 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CandleChartComponent isn't changed when empty 1`] = `
-<CandleChart
-  currency="BTC"
-  element="candle_div"
+<div
+  id="candle_div"
 />
 `;
 
 exports[`CandleChartComponent isn't changed when not empty 1`] = `
-<CandleChart
-  currency="BTC"
-  element="candle_div"
+<div
+  id="candle_div"
 />
 `;

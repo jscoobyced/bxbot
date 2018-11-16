@@ -4,7 +4,6 @@ import { IAnalyser } from './analysis/Models';
 import { ThreeBlackCrows } from './analysis/ThreeBlackCrows';
 import { ThreeLinesBuy } from './analysis/ThreeLinesBuy';
 import { TwoBlackGapping } from './analysis/TwoBlackGapping';
-import { CandleChart } from './CandleChart';
 import { CandleChartDrawer } from './CandleChartDrawer';
 import { DataFormatter } from './DataFormatter';
 import { GoogleChartInitializer } from './GoogleChartInitializer';
@@ -38,9 +37,8 @@ export class CandleChartComponent extends React.Component<CandleChartComponentSt
     }
 
     public render(): JSX.Element {
-        return <CandleChart
-            element={CandleChartComponent.ChartElement}
-            currency={this.props.currency} />;
+        return <div id={CandleChartComponent.ChartElement}
+            className='chart-area'></div>;
     }
 
     private readonly drawChart = () => {
