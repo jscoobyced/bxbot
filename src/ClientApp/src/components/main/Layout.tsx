@@ -19,7 +19,7 @@ export class Layout extends React.Component<LayoutProps> {
             return <div></div>;
         }
 
-        return <div>
+        return <div className='content'>
             <Header navigationMenuContent={this.props.allContent.navigationMenuContent} />
             <main>
                 {this.props.children}

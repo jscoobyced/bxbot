@@ -2,12 +2,14 @@
 
 exports[`CandleChartComponent isn't changed when empty 1`] = `
 <div
+  className="chart-area"
   id="candle_div"
 />
 `;
 
 exports[`CandleChartComponent isn't changed when not empty 1`] = `
 <div
+  className="chart-area"
   id="candle_div"
 />
 `;

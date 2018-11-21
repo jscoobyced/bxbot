@@ -35,10 +35,14 @@ header span {
     padding: 5px 10px 5px 5px;
 }
 
-footer {
-    position: relative;
-    width: 100%;
-    text-align: center;
+main {
+    flex: 1;
+}
+
+.content {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 article {
@@ -60,6 +64,12 @@ section {
 select {
     background: white;
     padding: 5px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
 }
 
 @media screen and (max-width: 545px) {
